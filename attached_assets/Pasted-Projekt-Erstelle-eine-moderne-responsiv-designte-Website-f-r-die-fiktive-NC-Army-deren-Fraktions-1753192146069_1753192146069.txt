@@ -1,0 +1,102 @@
+Projekt
+Erstelle eine moderne, responsiv designte Website für die fiktive „NC‑Army“, deren Fraktionskonzept in Narco City die innere und äußere Sicherheit gewährleistet. Die Seite soll eine professionelle Militär‑Ästhetik (Farbpalette: Dunkelgrün, Oliv‑ und Grautöne; klare Typografie) besitzen und in folgende Hauptbereiche gegliedert sein:
+
+Home
+
+Hero-Banner mit prägnantem Claim („Stärke. Disziplin. Schutz.“) und Hintergrundmotiv: Soldaten-Formation oder Fahne.
+
+Kurztext/Mission Statement („Wir sichern Narco City – an Land, zu Wasser und in der Luft.“)
+
+Call-to-Action‑Button: „Jetzt Rekrutieren“ und „Erfahre mehr“.
+
+Über uns
+
+Abschnitt „Mandat & Aufgabenprofil“ mit Icons für die fünf Kernaufgaben (Ordnung, Grenzschutz, zivile Unterstützung, Spezialoperationen, Ausbildung).
+
+Kurzvorstellung der Kommandostruktur mit Foto‑Illustrationen für „Army‑01“ und die vier Generäle.
+
+Struktur & Ränge
+
+Interaktive Rangliste (Oberkommando → Abteilungsleitung → Drill Sergeants/Ausbilder → Active Duty Soldiers → Rekruten).
+
+Mouse‑over mit Kurzinfos zu jedem Rang und dessen Befugnissen.
+
+Abteilungen
+
+Vier Tabs oder Cards für:
+
+Military Police (inkl. 20 Plätze)
+
+SEALs (10 Plätze)
+
+Infanterie (10 Plätze)
+
+Luftwaffe (5 Plätze)
+
+Je Karte: Icon, Kurztext „Aufgabenschwerpunkt“ und „Fähigkeiten“.
+
+Optional: „Erfahre mehr“-Link zu Detailseiten.
+
+Recruitment
+
+Beschreibe den Ablauf: Online‑Bewerbung → Theorietest → Lagespiel → Vor‑Ort‑Auswahl → Probezeit.
+
+Fortschritts-Badge‑Visualisierung („Stufe 1 von 5“ etc.).
+
+Bewerbungsformular (Name, In‑Game‑Infos, bevorzugte Einheit, Motivationstext).
+
+Hinweise zu Voraussetzungen (Alter, Visum‑Stufe, Empfehlungsschreiben).
+
+Ausbildung & Training
+
+Übersicht Grundausbildung (4 Module) und Fachmodule je Abteilung.
+
+Kalender‑Widget für wöchentliche Schieß‑ und Sport‑Übungen sowie monatliche Großübungen.
+
+Fortschritts‑Tracker und Badge‑Icons für absolvierte Module.
+
+Digitale Tools
+
+Vorstellung des Discord-Bots („Rollenmanagement, Einsatzstatus, Channel‑Automatisierung“)
+
+Screenshots/Mockups des Webpanels (Dashboard, Einsatz‑ und Trainingsübersicht).
+
+Darstellung der Abteilungs‑WebApp: Personalakte, Modul-Tracking, Schichtplanung, Dokumenten‑Management.
+
+Kurzer Demo‑Flow („So schnell erstellst du eine Mission“).
+
+Downloads & Vorlagen
+
+PDF‑Links zu Templates: Operationsplan, Einsatzbericht, Beförderungs‑ und Disziplinarvorlagen.
+
+Kontakt & Support
+
+Kontaktformular für Fragen und Feedback an den Generalstab.
+
+Hinweise auf Trainings‑Termine, Support‑E‑Mail und Discord‑Link.
+
+Design & Funktionalität
+
+Nutze ein responsives, grid‑basiertes Layout.
+
+Verwende frische, aber dezente Hover‑Animationen und sanfte Übergänge.
+
+Implementiere eine Sticky-Navigation mit Scrollspy.
+
+Ladezeit-Optimierung (Lazy‑Loading von Bildern).
+
+Barrierefreiheit: Alt‑Texte, ausreichende Farbkontraste, Tastatur‑Navigation.
+
+Technische Spezifikationen
+
+Generiere sauberen HTML5/CSS3-Code (SCSS oder Tailwind möglich).
+
+Nutze JavaScript oder React für interaktive Elemente (Tabs, Modals, Formular‑Validierung).
+
+Optional: Integration eines leichtgewichtigen CMS (z. B. Netlify CMS) für einfache Inhalts­pflege.
+
+Ergebnis
+
+Eine fertig lauffähige GitHub‑Repository mit allen Assets, Code und einer Deployment‑Anleitung.
+
+Dokumentation kurz im README, wie man neue Abteilungen, Ränge oder Trainingsmodule ergänzt.
