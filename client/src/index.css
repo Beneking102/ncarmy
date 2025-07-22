@@ -25,11 +25,14 @@
   --radius: 0.5rem;
 
   /* Military Color Palette */
-  --military-dark: hsl(147, 40%, 17%);
-  --military-olive: hsl(76, 57%, 16%);
-  --military-sage: hsl(162, 25%, 40%);
-  --military-charcoal: hsl(223, 12%, 35%);
-  --military-success: hsl(159, 90%, 20%);
+  --military-dark: hsl(0, 0%, 8%);
+  --military-olive: hsl(60, 30%, 25%);
+  --military-sage: hsl(88, 50%, 35%);
+  --military-charcoal: hsl(0, 0%, 15%);
+  --military-camo-green: hsl(72, 35%, 20%);
+  --military-desert: hsl(45, 25%, 65%);
+  --military-steel: hsl(210, 15%, 25%);
+  --military-success: hsl(88, 70%, 35%);
 }
 
 .dark {
@@ -104,4 +107,93 @@
       transform: translateY(0);
     }
   }
+}
+
+/* Enhanced Army animations */
+@keyframes militaryPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInFromRight {
+  0% { transform: translateX(100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes scaleInCenter {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes radar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.military-pulse {
+  animation: militaryPulse 2s ease-in-out infinite;
+}
+
+.slide-in-left {
+  animation: slideInFromLeft 0.8s ease-out;
+}
+
+.slide-in-right {
+  animation: slideInFromRight 0.8s ease-out;
+}
+
+.scale-in-center {
+  animation: scaleInCenter 0.5s ease-out;
+}
+
+.radar-sweep {
+  animation: radar 3s linear infinite;
+}
+
+/* Military styling */
+.military-heading {
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.tactical-grid {
+  background-image: 
+    linear-gradient(rgba(107, 142, 35, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(107, 142, 35, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.military-button {
+  background: linear-gradient(135deg, hsl(var(--military-olive)), hsl(var(--military-camo-green)));
+  border: 2px solid hsl(var(--primary));
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.military-button:hover {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--military-olive)));
+  box-shadow: 0 0 20px rgba(107, 142, 35, 0.4);
+  transform: translateY(-2px);
+}
+
+.status-indicator {
+  position: relative;
+}
+
+.status-indicator::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: hsl(var(--military-success));
+  border-radius: 50%;
+  animation: militaryPulse 2s ease-in-out infinite;
 }

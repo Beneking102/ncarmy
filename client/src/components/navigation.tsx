@@ -25,23 +25,28 @@ export default function Navigation() {
   };
 
   return (
-    <nav className="fixed top-0 w-full bg-[hsl(var(--military-dark))]/95 backdrop-blur-sm z-50 border-b border-[hsl(var(--military-sage))]/20">
+    <nav className="fixed top-0 w-full bg-[hsl(var(--military-dark))]/95 backdrop-blur-sm z-50 border-b-2 border-[hsl(var(--military-success))]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-3">
-            <Shield className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold">NC-Army</span>
+            <div className="w-12 h-12 bg-[hsl(var(--military-success))]/20 border-2 border-[hsl(var(--military-success))] flex items-center justify-center">
+              <Shield className="h-6 w-6 text-[hsl(var(--military-success))]" />
+            </div>
+            <div>
+              <span className="text-2xl font-bold military-heading text-white">NC-ARMY</span>
+              <div className="text-xs text-[hsl(var(--military-desert))] font-mono uppercase tracking-widest">ELITE FORCE</div>
+            </div>
           </div>
           
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-1">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => handleNavClick(item.href)}
-                className={`hover:text-primary transition-colors ${
+                className={`px-4 py-2 font-mono text-sm uppercase tracking-widest font-bold border-l-2 transition-all duration-300 ${
                   activeSection === item.href.substring(1) 
-                    ? "text-primary" 
-                    : "text-white"
+                    ? "text-[hsl(var(--military-success))] border-[hsl(var(--military-success))] bg-[hsl(var(--military-success))]/10" 
+                    : "text-gray-300 border-transparent hover:text-white hover:border-[hsl(var(--military-success))]/50 hover:bg-[hsl(var(--military-success))]/5"
                 }`}
               >
                 {item.label}
