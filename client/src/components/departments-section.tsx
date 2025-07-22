@@ -123,8 +123,14 @@ export default function DepartmentsSection() {
                         ))}
                       </ul>
                     </div>
-                    <Button className="bg-primary hover:bg-primary/90 text-white font-bold">
-                      Erfahre mehr
+                    <Button 
+                      onClick={() => {
+                        const element = document.querySelector("#recruitment");
+                        element?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="bg-primary hover:bg-primary/90 text-white font-bold"
+                    >
+                      Jetzt Bewerben
                     </Button>
                   </div>
                 </div>

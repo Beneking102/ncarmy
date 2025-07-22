@@ -40,9 +40,18 @@ export default function RecruitmentSection() {
   const onSubmit = async (data: ApplicationForm) => {
     setIsSubmitting(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const response = await fetch('/api/applications', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit application');
+      }
+
       toast({
         title: "Bewerbung eingereicht",
         description: "Ihre Bewerbung wurde erfolgreich übermittelt. Sie erhalten in Kürze eine Bestätigung.",
@@ -146,17 +155,16 @@ export default function RecruitmentSection() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <Label htmlFor="preferredUnit" className="text-white">Bevorzugte Einheit *</Label>
-                  <Select {...register("preferredUnit", { required: "Einheit auswählen" })}>
-                    <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
-                      <SelectValue placeholder="Einheit auswählen" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="military-police">Military Police</SelectItem>
-                      <SelectItem value="seals">SEALs</SelectItem>
-                      <SelectItem value="infantry">Infanterie</SelectItem>
-                      <SelectItem value="airforce">Luftwaffe</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <select
+                    {...register("preferredUnit", { required: "Einheit auswählen" })}
+                    className="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                  >
+                    <option value="">Einheit auswählen</option>
+                    <option value="military-police">Military Police</option>
+                    <option value="seals">SEALs</option>
+                    <option value="infantry">Infanterie</option>
+                    <option value="airforce">Luftwaffe</option>
+                  </select>
                   {errors.preferredUnit && <p className="text-red-400 text-sm mt-1">{errors.preferredUnit.message}</p>}
                 </div>
                 <div>

@@ -16,17 +16,17 @@ interface ContactForm {
   message: string;
 }
 
-const trainingTimes = [
-  { label: "Schießtraining:", time: "Mittwochs, 20:00 Uhr" },
-  { label: "Sporttraining:", time: "Freitags, 19:30 Uhr" },
-  { label: "Großübungen:", time: "Jeden ersten Samstag im Monat, 15:00 Uhr" }
+const supportInfo = [
+  { label: "Antwortzeit:", info: "24-48 Stunden" },
+  { label: "Support-Zeiten:", info: "Täglich 14:00-22:00 Uhr" },
+  { label: "Notfall-Kontakt:", info: "Discord DM an Generalstab" }
 ];
 
 const stats = [
-  { value: "127", label: "Aktive Mitglieder" },
-  { value: "89", label: "Missionen diesen Monat" },
-  { value: "1,243", label: "Trainingsstunden" },
-  { value: "99.8%", label: "System-Uptime" }
+  { value: "200+", label: "Discord Mitglieder" },
+  { value: "50+", label: "Aktive Soldaten" },
+  { value: "24/7", label: "Server-Verfügbarkeit" },
+  { value: "100%", label: "Engagement-Rate" }
 ];
 
 export default function ContactSection() {
@@ -37,9 +37,18 @@ export default function ContactSection() {
   const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       toast({
         title: "Nachricht gesendet",
         description: "Ihre Nachricht wurde erfolgreich übermittelt. Wir melden uns in Kürze bei Ihnen.",
@@ -100,17 +109,16 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <Label htmlFor="contact-subject" className="text-white">Betreff</Label>
-                  <Select {...register("subject", { required: "Betreff auswählen" })}>
-                    <SelectTrigger className="bg-gray-700 border-gray-600 text-white">
-                      <SelectValue placeholder="Betreff auswählen" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="general">Allgemeine Frage</SelectItem>
-                      <SelectItem value="application">Bewerbung</SelectItem>
-                      <SelectItem value="support">Technischer Support</SelectItem>
-                      <SelectItem value="complaint">Beschwerde</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <select
+                    {...register("subject", { required: "Betreff auswählen" })}
+                    className="w-full p-3 bg-gray-700 border border-gray-600 text-white rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
+                  >
+                    <option value="">Betreff auswählen</option>
+                    <option value="general">Allgemeine Frage</option>
+                    <option value="application">Bewerbung</option>
+                    <option value="support">Technischer Support</option>
+                    <option value="complaint">Beschwerde</option>
+                  </select>
                   {errors.subject && <p className="text-red-400 text-sm mt-1">{errors.subject.message}</p>}
                 </div>
                 <div>
@@ -142,12 +150,12 @@ export default function ContactSection() {
               <CardContent className="p-6">
                 <h4 className="text-xl font-bold mb-4 flex items-center text-white">
                   <Clock className="text-primary mr-3 h-6 w-6" />
-                  Trainingszeiten
+                  Support-Informationen
                 </h4>
                 <div className="space-y-2 text-gray-300">
-                  {trainingTimes.map((training, index) => (
+                  {supportInfo.map((info, index) => (
                     <p key={index}>
-                      <span className="font-bold">{training.label}</span> {training.time}
+                      <span className="font-bold">{info.label}</span> {info.info}
                     </p>
                   ))}
                 </div>
@@ -167,7 +175,12 @@ export default function ContactSection() {
                   </div>
                   <div className="flex items-center space-x-3">
                     <Users className="h-5 w-5 text-blue-500" />
-                    <a href="#" className="text-blue-400 hover:text-blue-300 transition-colors">
+                    <a 
+                      href="https://discord.gg/jnMEj7w8Cs" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-blue-400 hover:text-blue-300 transition-colors"
+                    >
                       NC-Army Discord Server
                     </a>
                   </div>
@@ -195,7 +208,7 @@ export default function ContactSection() {
             {/* Quick Stats */}
             <Card className="bg-[hsl(var(--military-charcoal))]/30 border-[hsl(var(--military-sage))]/20">
               <CardContent className="p-6">
-                <h4 className="text-xl font-bold mb-4 text-white">Aktuelle Zahlen</h4>
+                <h4 className="text-xl font-bold mb-4 text-white">Community-Statistiken</h4>
                 <div className="grid grid-cols-2 gap-4 text-center">
                   {stats.map((stat, index) => (
                     <div key={index}>
@@ -203,6 +216,15 @@ export default function ContactSection() {
                       <p className="text-sm text-gray-400">{stat.label}</p>
                     </div>
                   ))}
+                </div>
+                <div className="mt-4 text-center">
+                  <Button 
+                    onClick={() => window.open('https://discord.gg/jnMEj7w8Cs', '_blank')}
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold"
+                  >
+                    <Users className="mr-2 h-4 w-4" />
+                    Discord beitreten
+                  </Button>
                 </div>
               </CardContent>
             </Card>

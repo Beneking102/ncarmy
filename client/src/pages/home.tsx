@@ -6,7 +6,6 @@ import DepartmentsSection from "@/components/departments-section";
 import RecruitmentSection from "@/components/recruitment-section";
 import TrainingSection from "@/components/training-section";
 import ToolsSection from "@/components/tools-section";
-import DownloadsSection from "@/components/downloads-section";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 
@@ -21,7 +20,6 @@ export default function Home() {
       <RecruitmentSection />
       <TrainingSection />
       <ToolsSection />
-      <DownloadsSection />
       <ContactSection />
       <Footer />
     </div>

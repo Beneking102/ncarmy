@@ -22,9 +22,9 @@ const footerSections = [
   {
     title: "Rechtliches",
     links: [
-      { label: "Impressum", href: "#" },
-      { label: "Datenschutz", href: "#" },
-      { label: "Nutzungsbedingungen", href: "#" }
+      { label: "Impressum", href: "/impressum" },
+      { label: "Datenschutz", href: "/datenschutz" },
+      { label: "Nutzungsbedingungen", href: "/nutzungsbedingungen" }
     ]
   }
 ];
@@ -51,12 +51,21 @@ export default function Footer() {
               <ul className="space-y-2 text-sm text-gray-300">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a 
-                      href={link.href} 
-                      className="hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </a>
+                    {link.href.startsWith('/') ? (
+                      <a 
+                        href={link.href} 
+                        className="hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <a 
+                        href={link.href} 
+                        className="hover:text-primary transition-colors"
+                      >
+                        {link.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -65,7 +74,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2024 NC-Army. Alle Rechte vorbehalten. | Narco City Roleplay</p>
+          <p>&copy; 2025 NC-Army. Alle Rechte vorbehalten. | Narco City Roleplay</p>
         </div>
       </div>
     </footer>
