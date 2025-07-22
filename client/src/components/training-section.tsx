@@ -1,108 +1,156 @@
-import { GraduationCap, Target, Users, Shield, Brain, Handshake, Crown, Medal } from "lucide-react";
+import { GraduationCap, Target, Users, Shield, Brain, Handshake, Crown, Medal, Award, Zap } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { useState, useEffect, useRef } from "react";
 
 const trainingCategories = [
   {
-    title: "Grundausbildung",
-    description: "Essentielle Fähigkeiten für alle Rekruten",
+    title: "GRUNDAUSBILDUNG",
+    code: "BASIC",
+    description: "ESSENTIELLE FÄHIGKEITEN FÜR ALLE REKRUTEN",
     icon: GraduationCap,
-    color: "text-primary",
-    bgColor: "bg-primary/10",
-    borderColor: "border-primary/20",
+    color: "text-[hsl(var(--military-success))]",
+    bgColor: "bg-[hsl(var(--military-success))]/10",
+    borderColor: "border-[hsl(var(--military-success))]",
+    duration: "4 WOCHEN",
     trainings: [
-      "Militärische Grundlagen & Hierarchie",
-      "Kommunikation & Protokolle", 
-      "Physische Fitness & Kondition",
-      "Erste Hilfe & Notfallmedizin"
+      "MILITÄRISCHE GRUNDLAGEN & HIERARCHIE",
+      "KOMMUNIKATION & PROTOKOLLE", 
+      "PHYSISCHE FITNESS & KONDITION",
+      "ERSTE HILFE & NOTFALLMEDIZIN"
     ]
   },
   {
-    title: "Waffen & Taktik",
-    description: "Kampftraining und taktische Ausbildung", 
+    title: "WAFFEN & TAKTIK",
+    code: "COMBAT",
+    description: "KAMPFTRAINING UND TAKTISCHE AUSBILDUNG", 
     icon: Target,
-    color: "text-red-500",
-    bgColor: "bg-red-500/10",
-    borderColor: "border-red-500/20",
+    color: "text-red-400",
+    bgColor: "bg-red-400/10",
+    borderColor: "border-red-400",
+    duration: "6 WOCHEN",
     trainings: [
-      "Waffensicherheit & Handhabung",
-      "Präzisionsschießen",
-      "Taktische Bewegungen",
-      "Nahkampftechniken"
+      "WAFFENSICHERHEIT & HANDHABUNG",
+      "PRÄZISIONSSCHIESSSEN",
+      "TAKTISCHE BEWEGUNGEN",
+      "NAHKAMPFTECHNIKEN"
     ]
   },
   {
-    title: "Teamwork & Führung",
-    description: "Führungsqualitäten und Teamkoordination",
+    title: "FÜHRUNG & TEAMWORK",
+    code: "LEADER",
+    description: "FÜHRUNGSQUALITÄTEN UND TEAMKOORDINATION",
     icon: Users,
-    color: "text-blue-500",
-    bgColor: "bg-blue-500/10", 
-    borderColor: "border-blue-500/20",
+    color: "text-blue-400",
+    bgColor: "bg-blue-400/10", 
+    borderColor: "border-blue-400",
+    duration: "3 WOCHEN",
     trainings: [
-      "Teamführung & Motivation",
-      "Konflikte lösen",
-      "Einsatzplanung",
-      "Entscheidungsfindung unter Druck"
+      "TEAMFÜHRUNG & MOTIVATION",
+      "KONFLIKTE LÖSEN",
+      "EINSATZPLANUNG",
+      "ENTSCHEIDUNGSFINDUNG UNTER DRUCK"
     ]
   },
   {
-    title: "Spezialisierungen",
-    description: "Abteilungsspezifische Fähigkeiten",
+    title: "SPEZIALISIERUNGEN",
+    code: "SPEC",
+    description: "ABTEILUNGSSPEZIFISCHE FÄHIGKEITEN",
     icon: Shield,
-    color: "text-yellow-500",
-    bgColor: "bg-yellow-500/10",
-    borderColor: "border-yellow-500/20",
+    color: "text-yellow-400",
+    bgColor: "bg-yellow-400/10",
+    borderColor: "border-yellow-400",
+    duration: "8 WOCHEN",
     trainings: [
-      "Military Police: Ermittlungen & Festnahmen",
-      "SEALs: Verdeckte Operationen",
-      "Infanterie: Territoriumskontrolle", 
-      "Luftwaffe: Flugzeugführung & Navigation"
+      "MILITARY POLICE: ERMITTLUNGEN & FESTNAHMEN",
+      "SPECIAL FORCES: VERDECKTE OPERATIONEN",
+      "INFANTERIE: TERRITORIUMSKONTROLLE", 
+      "LUFTWAFFE: FLUGZEUGFÜHRUNG & NAVIGATION"
     ]
   }
 ];
 
 const achievements = [
-  { icon: Medal, title: "Grundausbildung", description: "Alle Basis-Module abgeschlossen" },
-  { icon: Target, title: "Scharfschütze", description: "Präzisionsschießen gemeistert" },
-  { icon: Users, title: "Teamleader", description: "Führungsqualifikation erhalten" },
-  { icon: Crown, title: "Veteran", description: "Elite-Status erreicht" },
-  { icon: Brain, title: "Stratege", description: "Taktische Meisterschaft" },
-  { icon: Handshake, title: "Diplomat", description: "Verhandlungsexperte" }
+  { icon: Medal, title: "GRUNDAUSBILDUNG", code: "001", description: "ALLE BASIS-MODULE ABGESCHLOSSEN", color: "text-[hsl(var(--military-success))]" },
+  { icon: Target, title: "SCHARFSCHÜTZE", code: "002", description: "PRÄZISIONSSCHIESSSEN GEMEISTERT", color: "text-red-400" },
+  { icon: Users, title: "TEAMLEADER", code: "003", description: "FÜHRUNGSQUALIFIKATION ERHALTEN", color: "text-blue-400" },
+  { icon: Crown, title: "VETERAN", code: "004", description: "ELITE-STATUS ERREICHT", color: "text-yellow-400" },
+  { icon: Brain, title: "STRATEGE", code: "005", description: "TAKTISCHE MEISTERSCHAFT", color: "text-purple-400" },
+  { icon: Handshake, title: "DIPLOMAT", code: "006", description: "VERHANDLUNGSEXPERTE", color: "text-orange-400" }
 ];
 
 export default function TrainingSection() {
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="training" className="py-20 bg-gray-800">
+    <section ref={sectionRef} id="training" className="py-20 bg-[hsl(var(--military-dark))] tactical-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">Ausbildung & Training</h2>
-          <p className="text-xl text-gray-300">Umfassende Ausbildungsprogramme für alle Karrierestufen</p>
+        <div className={`text-center mb-16 ${isVisible ? 'fade-in-up' : 'opacity-0'}`}>
+          <div className="mb-4 flex justify-center">
+            <div className="px-4 py-2 bg-[hsl(var(--military-success))]/10 border border-[hsl(var(--military-success))]/30">
+              <span className="text-[hsl(var(--military-success))] font-mono text-sm uppercase tracking-widest">[AUSBILDUNG]</span>
+            </div>
+          </div>
+          <h2 className="military-heading text-5xl md:text-6xl mb-6 text-white">TRAINING PROGRAM</h2>
+          <p className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed">
+            UMFASSENDES AUSBILDUNGSPROGRAMM • HÖCHSTE MILITÄRISCHE STANDARDS<br />
+            <span className="text-[hsl(var(--military-success))]">FORMT REKRUTEN ZU ELITESOLDATEN</span>
+          </p>
         </div>
 
         {/* Training Categories */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className={`grid lg:grid-cols-2 gap-8 mb-16 ${isVisible ? 'slide-in-left' : 'opacity-0'}`}>
           {trainingCategories.map((category, index) => {
             const Icon = category.icon;
             return (
               <Card 
                 key={index} 
-                className={`${category.bgColor} ${category.borderColor} border-2 hover:scale-105 transition-transform`}
+                className={`${category.bgColor} ${category.borderColor} border-2 hover:scale-105 transition-all duration-500`}
+                style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <CardContent className="p-6">
-                  <div className="flex items-center mb-4">
-                    <div className={`w-12 h-12 ${category.bgColor} rounded-full flex items-center justify-center mr-4`}>
-                      <Icon className={`h-6 w-6 ${category.color}`} />
+                  <div className="flex items-center mb-6">
+                    <div className={`w-16 h-16 ${category.bgColor} border-2 ${category.borderColor} flex items-center justify-center mr-4`}>
+                      <Icon className={`h-8 w-8 ${category.color}`} />
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">{category.title}</h3>
-                      <p className="text-gray-300">{category.description}</p>
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-3 mb-2">
+                        <span className={`text-sm px-3 py-1 ${category.bgColor} ${category.color} font-mono border ${category.borderColor}`}>
+                          {category.code}
+                        </span>
+                        <span className="text-xs px-2 py-1 bg-gray-500/20 text-gray-400 border border-gray-500/30 font-mono">
+                          {category.duration}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-white military-heading">{category.title}</h3>
+                      <p className="text-gray-300 text-sm font-mono">{category.description}</p>
                     </div>
                   </div>
                   
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {category.trainings.map((training, trainingIndex) => (
-                      <div key={trainingIndex} className="flex items-center space-x-3">
-                        <div className={`w-2 h-2 ${category.color.replace('text-', 'bg-')} rounded-full`}></div>
-                        <span className="text-gray-300">{training}</span>
+                      <div key={trainingIndex} className="flex items-center space-x-3 p-2 bg-[hsl(var(--military-charcoal))]/30 border border-gray-600">
+                        <Zap className={`w-4 h-4 ${category.color} flex-shrink-0`} />
+                        <span className="text-gray-300 font-mono text-sm">{training}</span>
                       </div>
                     ))}
                   </div>
@@ -113,25 +161,38 @@ export default function TrainingSection() {
         </div>
 
         {/* Achievement System */}
-        <Card className="bg-[hsl(var(--military-dark))]/50 border-[hsl(var(--military-sage))]/20">
-          <CardContent className="p-8">
-            <h3 className="text-2xl font-bold mb-6 text-center text-white">Leistungsabzeichen & Zertifizierungen</h3>
-            <div className="grid md:grid-cols-3 gap-6">
-              {achievements.map((achievement, index) => {
-                const Icon = achievement.icon;
-                return (
-                  <div key={index} className="text-center group">
-                    <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="h-8 w-8 text-gray-400 group-hover:text-primary transition-colors" />
+        <div className={`${isVisible ? 'fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.5s' }}>
+          <Card className="bg-[hsl(var(--military-charcoal))]/50 border-2 border-[hsl(var(--military-success))]/30">
+            <CardContent className="p-8">
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-[hsl(var(--military-success))]/20 border-2 border-[hsl(var(--military-success))] flex items-center justify-center mx-auto mb-4">
+                  <Award className="h-8 w-8 text-[hsl(var(--military-success))]" />
+                </div>
+                <h3 className="text-3xl font-bold military-heading text-white">LEISTUNGSABZEICHEN</h3>
+                <p className="text-gray-300 font-mono text-sm mt-2">AUSZEICHNUNGEN • ZERTIFIZIERUNGEN • EHRUNGEN</p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-6">
+                {achievements.map((achievement, index) => {
+                  const Icon = achievement.icon;
+                  return (
+                    <div key={index} className="text-center group bg-[hsl(var(--military-dark))]/50 p-4 border border-gray-600 hover:border-[hsl(var(--military-success))]/50 transition-all duration-300">
+                      <div className="flex items-center justify-center space-x-3 mb-3">
+                        <div className="w-12 h-12 bg-gray-700 border-2 border-gray-600 flex items-center justify-center group-hover:border-[hsl(var(--military-success))] transition-colors">
+                          <Icon className={`h-6 w-6 ${achievement.color} group-hover:text-[hsl(var(--military-success))] transition-colors`} />
+                        </div>
+                        <span className="text-xs px-2 py-1 bg-gray-500/20 text-gray-400 border border-gray-500/30 font-mono">
+                          #{achievement.code}
+                        </span>
+                      </div>
+                      <h4 className="font-bold text-white mb-2 military-heading text-sm">{achievement.title}</h4>
+                      <p className="text-xs text-gray-400 font-mono">{achievement.description}</p>
                     </div>
-                    <h4 className="font-bold text-white mb-1">{achievement.title}</h4>
-                    <p className="text-sm text-gray-400">{achievement.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </CardContent>
-        </Card>
+                  );
+                })}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   );

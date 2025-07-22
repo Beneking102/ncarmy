@@ -1,142 +1,247 @@
-import { useState } from "react";
-import { Badge, Target, Users, Plane } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Badge, Target, Users, Plane, Shield, Crosshair } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 const departments = [
   {
     id: "military-police",
-    name: "Military Police",
+    name: "MILITARY POLICE",
+    code: "MP",
     icon: Badge,
     slots: 20,
-    image: "https://images.unsplash.com/photo-1544027993-37dbfe43562a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    focus: "Durchsetzung militärischer Disziplin, Sicherung militärischer Einrichtungen, Ermittlungen bei militärischen Vergehen",
+    status: "AKTIV",
+    classification: "BRAVO",
+    focus: "DURCHSETZUNG MILITÄRISCHER DISZIPLIN • SICHERUNG MILITÄRISCHER EINRICHTUNGEN • ERMITTLUNGEN",
     skills: [
-      "Festnahme und Verhör",
-      "Objektschutz",
-      "Verkehrskontrolle",
-      "Ermittlungsarbeit"
-    ]
+      "FESTNAHME & VERHÖR",
+      "OBJEKTSCHUTZ",
+      "VERKEHRSKONTROLLE", 
+      "ERMITTLUNGSARBEIT"
+    ],
+    color: "text-blue-400",
+    borderColor: "border-blue-400",
+    bgColor: "bg-blue-400/10"
   },
   {
     id: "seals",
-    name: "SEALs",
-    icon: Target,
+    name: "SPECIAL FORCES",
+    code: "SF",
+    icon: Crosshair,
     slots: 10,
-    image: "https://images.unsplash.com/photo-1562577309-4932fdd64cd1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    focus: "Spezialoperationen, verdeckte Einsätze, Rettungsmissionen und Anti-Terror-Operationen",
+    status: "KLASSIFIZIERT",
+    classification: "ALPHA",
+    focus: "SPEZIALOPERATIONEN • VERDECKTE EINSÄTZE • RETTUNGSMISSIONEN • ANTI-TERROR-OPERATIONEN",
     skills: [
-      "Verdeckte Operationen",
-      "Präzisionsschießen",
-      "Sprengstoffentsorgung",
-      "Nahkampf"
-    ]
+      "VERDECKTE OPERATIONEN",
+      "PRÄZISIONSSCHIESSSEN",
+      "SPRENGSTOFFENTSORGUNG",
+      "NAHKAMPF"
+    ],
+    color: "text-red-400",
+    borderColor: "border-red-400",
+    bgColor: "bg-red-400/10"
   },
   {
     id: "infantry",
-    name: "Infanterie",
+    name: "INFANTERIE",
+    code: "INF",
     icon: Users,
-    slots: 10,
-    image: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    focus: "Bodentruppen für direkte Kampfeinsätze, Patrouillen und Territorialkontrolle",
+    slots: 30,
+    status: "AKTIV",
+    classification: "CHARLIE",
+    focus: "BODENTRUPPEN • DIREKTE KAMPFEINSÄTZE • PATROUILLEN • TERRITORIALKONTROLLE",
     skills: [
-      "Bodenkampf",
-      "Patrouillendienst",
-      "Territorialsicherung",
-      "Teamkoordination"
-    ]
+      "BODENKAMPF",
+      "PATROUILLENDIENST",
+      "TERRITORIALSICHERUNG",
+      "TEAMKOORDINATION"
+    ],
+    color: "text-[hsl(var(--military-success))]",
+    borderColor: "border-[hsl(var(--military-success))]",
+    bgColor: "bg-[hsl(var(--military-success))]/10"
   },
   {
     id: "airforce",
-    name: "Luftwaffe",
+    name: "LUFTWAFFE",
+    code: "AF",
     icon: Plane,
-    slots: 5,
-    image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600",
-    focus: "Luftüberwachung, Transportmissionen und Luftunterstützung für Bodentruppen",
+    slots: 15,
+    status: "OPERATIONAL",
+    classification: "BRAVO",
+    focus: "LUFTÜBERWACHUNG • TRANSPORTMISSIONEN • LUFTUNTERSTÜTZUNG FÜR BODENTRUPPEN",
     skills: [
-      "Flugzeugführung",
-      "Luftüberwachung",
-      "Transportlogistik",
-      "Luftnahunterstützung"
-    ]
+      "FLUGZEUGFÜHRUNG",
+      "LUFTÜBERWACHUNG",
+      "TRANSPORTLOGISTIK",
+      "LUFTNAHUNTERSTÜTZUNG"
+    ],
+    color: "text-yellow-400",
+    borderColor: "border-yellow-400",
+    bgColor: "bg-yellow-400/10"
   }
 ];
 
 export default function DepartmentsSection() {
   const [activeDepartment, setActiveDepartment] = useState("military-police");
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const currentDepartment = departments.find(d => d.id === activeDepartment);
 
   return (
-    <section id="departments" className="py-20 bg-gray-800">
+    <section ref={sectionRef} id="departments" className="py-20 bg-[hsl(var(--military-dark))] tactical-grid">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white">Abteilungen</h2>
-          <p className="text-xl text-gray-300">Spezialisierte Einheiten für verschiedene Einsatzgebiete</p>
+        <div className={`text-center mb-16 ${isVisible ? 'fade-in-up' : 'opacity-0'}`}>
+          <div className="mb-4 flex justify-center">
+            <div className="px-4 py-2 bg-[hsl(var(--military-success))]/10 border border-[hsl(var(--military-success))]/30">
+              <span className="text-[hsl(var(--military-success))] font-mono text-sm uppercase tracking-widest">[ABTEILUNGEN]</span>
+            </div>
+          </div>
+          <h2 className="military-heading text-5xl md:text-6xl mb-6 text-white">SPEZIALABTEILUNGEN</h2>
+          <p className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed">
+            HOCHSPEZIALISIERTE EINHEITEN • VERSCHIEDENE EINSATZGEBIETE<br />
+            <span className="text-[hsl(var(--military-success))]">WÄHLEN SIE IHRE ABTEILUNG FÜR DETAILLIERTE INFORMATIONEN</span>
+          </p>
         </div>
 
-        {/* Department Tabs */}
-        <div className="flex flex-wrap justify-center mb-8 bg-[hsl(var(--military-charcoal))]/30 rounded-lg p-2">
-          {departments.map((department) => (
-            <Button
-              key={department.id}
-              onClick={() => setActiveDepartment(department.id)}
-              className={`px-6 py-3 rounded-lg font-bold m-1 transition-all ${
-                activeDepartment === department.id
-                  ? "department-tab active text-white"
-                  : "bg-transparent text-gray-300 hover:text-white hover:bg-white/10"
-              }`}
-            >
-              {department.name}
-            </Button>
-          ))}
+        {/* Department Selector */}
+        <div className={`mb-16 ${isVisible ? 'slide-in-left' : 'opacity-0'}`}>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {departments.map((department, index) => {
+              const Icon = department.icon;
+              return (
+                <Card
+                  key={department.id}
+                  className={`cursor-pointer transition-all duration-500 hover:scale-105 ${
+                    activeDepartment === department.id
+                      ? `${department.bgColor} border-2 ${department.borderColor}`
+                      : "bg-[hsl(var(--military-charcoal))]/50 border border-gray-600 hover:border-gray-400"
+                  }`}
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                  onClick={() => setActiveDepartment(department.id)}
+                >
+                  <CardContent className="p-4 text-center">
+                    <div className={`w-16 h-16 ${department.bgColor} border-2 ${department.borderColor} flex items-center justify-center mx-auto mb-3`}>
+                      <Icon className={`h-8 w-8 ${department.color}`} />
+                    </div>
+                    <h3 className="text-lg font-bold military-heading text-white">{department.code}</h3>
+                    <p className="text-sm text-gray-300 font-mono">{department.name}</p>
+                    <div className="mt-2 flex justify-center space-x-2">
+                      <span className={`text-xs px-2 py-1 ${department.bgColor} ${department.color} font-mono`}>
+                        {department.classification}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Department Content */}
+        {/* Department Details */}
         {currentDepartment && (
-          <Card className="bg-[hsl(var(--military-dark))]/50 border-[hsl(var(--military-sage))]/20">
-            <CardContent className="p-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <img 
-                  src={currentDepartment.image} 
-                  alt={`${currentDepartment.name} operation`} 
-                  className="rounded-lg shadow-lg w-full h-64 object-cover" 
-                />
-                <div>
-                  <div className="flex items-center mb-4">
-                    <currentDepartment.icon className="h-12 w-12 text-primary mr-4" />
-                    <div>
-                      <h3 className="text-2xl font-bold text-white">{currentDepartment.name}</h3>
-                      <p className="text-primary">{currentDepartment.slots} verfügbare Plätze</p>
-                    </div>
-                  </div>
-                  <div className="space-y-4">
-                    <div>
-                      <h4 className="font-bold text-lg mb-2 text-white">Aufgabenschwerpunkt</h4>
-                      <p className="text-gray-300">{currentDepartment.focus}</p>
+          <div className={`${isVisible ? 'fade-in-up' : 'opacity-0'}`} style={{ animationDelay: '0.5s' }}>
+            <Card className={`${currentDepartment.bgColor} border-2 ${currentDepartment.borderColor}`}>
+              <CardContent className="p-8">
+                {/* Header */}
+                <div className="mb-8 text-center">
+                  <div className="flex justify-center items-center space-x-4 mb-4">
+                    <div className={`w-20 h-20 ${currentDepartment.bgColor} border-2 ${currentDepartment.borderColor} flex items-center justify-center`}>
+                      <currentDepartment.icon className={`h-10 w-10 ${currentDepartment.color}`} />
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg mb-2 text-white">Fähigkeiten</h4>
-                      <ul className="list-disc list-inside text-gray-300 space-y-1">
-                        {currentDepartment.skills.map((skill, index) => (
-                          <li key={index}>{skill}</li>
-                        ))}
-                      </ul>
+                      <h3 className="text-3xl font-bold text-white military-heading">{currentDepartment.name}</h3>
+                      <div className="flex items-center justify-center space-x-4 mt-2">
+                        <span className={`text-sm px-3 py-1 ${currentDepartment.bgColor} ${currentDepartment.color} font-mono border ${currentDepartment.borderColor}`}>
+                          STATUS: {currentDepartment.status}
+                        </span>
+                        <span className="text-sm text-gray-300 font-mono">CLEARANCE: {currentDepartment.classification}</span>
+                      </div>
                     </div>
-                    <Button 
-                      onClick={() => {
-                        const element = document.querySelector("#recruitment");
-                        element?.scrollIntoView({ behavior: "smooth" });
-                      }}
-                      className="bg-primary hover:bg-primary/90 text-white font-bold"
-                    >
-                      Jetzt Bewerben
-                    </Button>
                   </div>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+
+                {/* Details Grid */}
+                <div className="grid md:grid-cols-2 gap-8">
+                  {/* Mission Focus */}
+                  <div>
+                    <h4 className="font-bold text-xl mb-4 text-white military-heading flex items-center">
+                      <Target className="w-5 h-5 mr-2 text-[hsl(var(--military-success))]" />
+                      AUFGABENSCHWERPUNKT
+                    </h4>
+                    <p className="text-gray-300 font-mono leading-relaxed">{currentDepartment.focus}</p>
+                  </div>
+
+                  {/* Skills */}
+                  <div>
+                    <h4 className="font-bold text-xl mb-4 text-white military-heading flex items-center">
+                      <Shield className="w-5 h-5 mr-2 text-[hsl(var(--military-success))]" />
+                      SPEZIALISIERUNGEN
+                    </h4>
+                    <div className="space-y-2">
+                      {currentDepartment.skills.map((skill, index) => (
+                        <div key={index} className="flex items-center space-x-2">
+                          <div className="w-2 h-2 bg-[hsl(var(--military-success))] rounded-full"></div>
+                          <span className="text-gray-300 font-mono text-sm">{skill}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="mt-8 p-6 bg-[hsl(var(--military-charcoal))]/50 border border-[hsl(var(--military-success))]/20">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-white font-mono">{currentDepartment.slots}</div>
+                      <div className="text-sm text-gray-300 font-mono uppercase">VERFÜGBARE PLÄTZE</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-[hsl(var(--military-success))] font-mono">AKTIV</div>
+                      <div className="text-sm text-gray-300 font-mono uppercase">REKRUTIERUNG</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-yellow-400 font-mono">24/7</div>
+                      <div className="text-sm text-gray-300 font-mono uppercase">EINSATZBEREIT</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Action Button */}
+                <div className="mt-8 text-center">
+                  <Button 
+                    onClick={() => {
+                      const element = document.querySelector("#recruitment");
+                      element?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="bg-[hsl(var(--military-success))] hover:bg-[hsl(var(--military-success))]/90 text-white font-bold px-8 py-3 military-heading text-lg"
+                  >
+                    JETZT BEWERBEN
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         )}
       </div>
     </section>
