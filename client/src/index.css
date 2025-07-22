@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(147, 50%, 47%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+
+  /* Military Color Palette */
+  --military-dark: hsl(147, 40%, 17%);
+  --military-olive: hsl(76, 57%, 16%);
+  --military-sage: hsl(162, 25%, 40%);
+  --military-charcoal: hsl(223, 12%, 35%);
+  --military-success: hsl(159, 90%, 20%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(147, 50%, 47%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  .section-active {
+    @apply border-l-4 border-primary bg-primary/10;
+  }
+
+  .rank-card:hover {
+    @apply -translate-y-1 shadow-xl shadow-black/20;
+  }
+
+  .department-tab.active {
+    @apply bg-gradient-to-br from-[hsl(var(--military-dark))] to-[hsl(var(--military-olive))];
+  }
+
+  .progress-step.active {
+    @apply bg-primary text-white;
+  }
+
+  .progress-step.completed {
+    @apply bg-[hsl(var(--military-sage))] text-white;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,132 @@
+Entwickle eine voll funktionsfähige, responsive Website für die NC‑Army – eine fiktionale Streitmacht, die in Narco City für Sicherheit und Ordnung sorgt. Die Seite soll ein modernes, militärisch‑professionelles Erscheinungsbild haben, intuitive Navigation bieten und alle folgenden Bereiche abdecken:
+
+1. Startseite („Home“)
+Hero‑Section mit großflächigem Hintergrundbild (Soldaten in Formation / Armeeflagge), prägnantem Claim („Stärke. Disziplin. Schutz.“) und zwei Buttons:
+
+„Jetzt bewerben“
+
+„Mehr erfahren“
+
+Kurz­mission (1–2 Sätze): „Wir sichern Narco City – an Land, zu Wasser und in der Luft.“
+
+Scrolling‑Teaser zu den wichtigsten Abschnitten (Struktur, Abteilungen, Tools).
+
+2. Über uns
+Mandat & Aufgabenprofil
+Fünf Icon‑Blöcke mit je einer Kernaufgabe:
+
+Innere Sicherheit
+
+Grenzschutz
+
+Zivile Unterstützung
+
+Spezial­operationen
+
+Ausbildung & Standards
+
+Kommandostruktur‑Portrait
+Vier Card‑Elemente für Army‑01 und die vier Generäle (Avatar, Rang, Kurzbeschreibung).
+
+3. Hierarchie & Dienstgrade
+Interaktives Rangdiagramm (von Oberkommando bis Rekruten).
+
+Hover‑Infos zu Befugnissen und Aufstiegskriterien.
+
+4. Abteilungsübersicht
+Vier übersichtliche Cards oder Tabs (Icons + Kurztext + „Details“‑Link) für:
+
+Military Police (20 Plätze)
+
+SEALs (10 Plätze)
+
+Infanterie (10 Plätze)
+
+Luftwaffe (5 Plätze)
+
+5. Aufnahme & Eignungsprüfung
+Prozess‑Visualisierung (5 Schritte mit Fortschrittsbar):
+
+Online‑Bewerbung
+
+Theorietest
+
+Lagespiel
+
+Vor‑Ort‑Auswahl
+
+Probezeit
+
+Bewerbungsformular mit Validierung (Name, In‑Game‑Infos, Wunsch­einheit, Motivationstext).
+
+6. Ausbildung & Training
+Modulübersicht
+
+Grundausbildung (4 Module)
+
+Fachmodule je Abteilung
+
+Kalender‑Widget für wöchentliche Übungen und monatliche Großübungen.
+
+Fortschritts‑Tracker mit Abzeichen für absolvierte Module.
+
+7. Digitale Kommandoplattform
+7.1 Discord‑Bot
+Features:
+
+Automatisierte Rollenzuweisung bei Beförderung
+
+Dynamische Kanalerstellung/Archivierung
+
+Slash‑Commands für Status & Einsatzmanagement
+
+Webpanel‑Mockup: Dashboard, Rollen‑Log, Einsatzübersicht
+
+7.2 Abteilungs‑WebApp
+Module:
+
+Personalakte (Profil, Ränge, Historie)
+
+Ausbildungs­tracker mit Zertifikaten
+
+Schicht- und Urlaubsplaner
+
+Dokumentenmanagement (Versionierung, Freigaben)
+
+Reporting‑Dashboards: Personalstatistiken, Einsatz‑Heatmaps
+
+8. Vorlagen & Downloads
+PDF‑Links zu:
+
+Operationsplan‑Template
+
+Einsatzbericht‑Template
+
+Beförderungs‑ und Disziplinar‑Vorlagen
+
+9. Kontakt & Support
+Formular für Anfragen an den Generalstab
+
+E‑Mail‑Adresse, Discord‑Einladungslink, Support‑Zeiten
+
+🔧 Design‑ und Technikspezifikation:
+
+Frameworks: TailwindCSS oder SCSS, React (für interaktive Komponenten)
+
+Layout: Grid‑basiert, Mobile‑First, Sticky‑Navigation mit Scrollspy
+
+Performance: Lazy‑Loading für Bilder, minimierte CSS/JS‑Bundles
+
+Accessibility: Alt‑Texte, Keyboard‑Navigation, Kontrastverhältnisse nach WCAG 2.1
+
+Deployment: GitHub‑Repo mit CI/CD (Netlify/Vercel), Netlify CMS‑Integration optional
+
+📦 Ergebnislieferung:
+
+Vollständiger Quellcode in einem öffentlichen GitHub‑Repository
+
+Klare Dokumentation im README (Struktur, Installation, Deployment)
+
+Asset‑Ordner mit Bildern, Icons und CSS/JS‑Dateien
+
+Starte jetzt und liefere eine professionelle, inhaltlich vollständige Website ab, die den Geist der NC‑Army perfekt widerspiegelt!
