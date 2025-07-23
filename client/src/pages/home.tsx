@@ -14,16 +14,18 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <StructureSection />
-      <DepartmentsSection />
-      <RecruitmentSection />
-      <TrainingSection />
-      <ToolsSection />
-      <ContactSection />
-      <Footer />
-      <StatusIndicator />
+      <div className="pt-16"> {/* Add spacing to prevent overlap with fixed navbar */}
+        <HeroSection />
+        <AboutSection />
+        <StructureSection />
+        <DepartmentsSection />
+        <RecruitmentSection />
+        <TrainingSection />
+        <ToolsSection />
+        <ContactSection />
+        <Footer />
+        <StatusIndicator />
+      </div>
     </div>
   );
 }

@@ -12,6 +12,26 @@ export async function apiRequest(
   url: string,
   data?: unknown | undefined,
 ): Promise<Response> {
+  // For React-only deployment, use mock API
+  const { mockApi } = await import('@/services/mockapi');
+  
+  if (url.includes('/api/applications') && method === 'POST') {
+    const result = await mockApi.submitApplication(data as any);
+    return new Response(JSON.stringify(result.data), { 
+      status: 200, 
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+  
+  if (url.includes('/api/contact') && method === 'POST') {
+    const result = await mockApi.submitContact(data as any);
+    return new Response(JSON.stringify(result.data), { 
+      status: 200, 
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // Fallback for other endpoints
   const res = await fetch(url, {
     method,
     headers: data ? { "Content-Type": "application/json" } : {},
@@ -29,7 +49,19 @@ export const getQueryFn: <T>(options: {
 }) => QueryFunction<T> =
   ({ on401: unauthorizedBehavior }) =>
   async ({ queryKey }) => {
-    const res = await fetch(queryKey.join("/") as string, {
+    const endpoint = queryKey.join("/");
+    
+    // For React-only deployment, return mock data from localStorage
+    if (endpoint.includes('/api/applications')) {
+      return JSON.parse(localStorage.getItem('nc-army-applications') || '[]');
+    }
+    
+    if (endpoint.includes('/api/contact')) {
+      return JSON.parse(localStorage.getItem('nc-army-contacts') || '[]');
+    }
+    
+    // Fallback to original fetch behavior for other endpoints
+    const res = await fetch(endpoint, {
       credentials: "include",
     });
 
