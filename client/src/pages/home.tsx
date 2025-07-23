@@ -9,12 +9,15 @@ import ToolsSection from "@/components/tools-section";
 import ContactSection from "@/components/contact-section";
 import Footer from "@/components/footer";
 import StatusIndicator from "@/components/status-indicator";
+import BackgroundAnimations from "@/components/background-animations";
+import EasterEggHints from "@/components/easter-egg-hints";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-900 text-white relative">
+      <BackgroundAnimations />
       <Navigation />
-      <div className="pt-16"> {/* Add spacing to prevent overlap with fixed navbar */}
+      <div className="pt-16 relative z-10"> {/* Add spacing to prevent overlap with fixed navbar */}
         <HeroSection />
         <AboutSection />
         <StructureSection />
@@ -25,6 +28,7 @@ export default function Home() {
         <ContactSection />
         <Footer />
         <StatusIndicator />
+        <EasterEggHints />
       </div>
     </div>
   );

@@ -77,10 +77,11 @@ export default function AboutSection() {
             </div>
           </div>
           <h2 className="military-heading text-5xl md:text-6xl mb-6 text-white">ÜBER DIE NC-ARMY</h2>
-          <p className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed">
-            HOCHKLASSIFIZIERTE MILITÄREINHEIT • GEGRÜNDET FÜR SPEZIALOPERATIONEN<br />
-            <span className="text-[hsl(var(--military-success))]">ZUGANG NUR FÜR AUTORISIERTES PERSONNEL</span>
-          </p>
+          <div className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed space-y-2">
+            <p className="text-center">HOCHKLASSIFIZIERTE MILITÄREINHEIT • GEGRÜNDET FÜR SPEZIALOPERATIONEN</p>
+            <p className="text-center"><span className="text-[hsl(var(--military-success))]">ZUGANG NUR FÜR AUTORISIERTES PERSONNEL</span></p>
+            <p className="text-center text-[hsl(var(--military-desert))]">PERSONALABTEILUNG KOORDINIERT ALLE REKRUTIERUNGSPROZESSE</p>
+          </div>
         </div>
 
         {/* Military Stats Bar */}

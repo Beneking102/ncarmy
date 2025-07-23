@@ -62,6 +62,25 @@ const departments = [
     bgColor: "bg-[hsl(var(--military-success))]/10"
   },
   {
+    id: "personnel",
+    name: "PERSONALABTEILUNG",
+    code: "HR",
+    icon: Users,
+    slots: 8,
+    status: "AKTIV",
+    classification: "ADMINISTRATION",
+    focus: "PERSONALVERWALTUNG • REKRUTIERUNG • AUSBILDUNGSKOORDINATION • PERSONALENTWICKLUNG",
+    skills: [
+      "PERSONALPLANUNG",
+      "REKRUTIERUNGSVERFAHREN",
+      "AUSBILDUNGSORGANISATION",
+      "PERSONALAKTEN-VERWALTUNG"
+    ],
+    color: "text-purple-400",
+    borderColor: "border-purple-400",
+    bgColor: "bg-purple-400/10"
+  },
+  {
     id: "airforce",
     name: "AIRFORCE",
     code: "AF",
@@ -118,10 +137,11 @@ export default function DepartmentsSection() {
             </div>
           </div>
           <h2 className="military-heading text-5xl md:text-6xl mb-6 text-white">SPEZIALABTEILUNGEN</h2>
-          <p className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed">
-            HOCHSPEZIALISIERTE EINHEITEN • VERSCHIEDENE EINSATZGEBIETE<br />
-            <span className="text-[hsl(var(--military-success))]">WÄHLEN SIE IHRE ABTEILUNG FÜR DETAILLIERTE INFORMATIONEN</span>
-          </p>
+          <div className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed space-y-2">
+            <p className="text-center">HOCHSPEZIALISIERTE EINHEITEN • VERSCHIEDENE EINSATZGEBIETE</p>
+            <p className="text-center"><span className="text-[hsl(var(--military-success))]">WÄHLEN SIE IHRE ABTEILUNG FÜR DETAILLIERTE INFORMATIONEN</span></p>
+            <p className="text-center text-purple-400">PERSONALABTEILUNG VERWALTET ALLE EINSTELLUNGEN UND TRANSFERS</p>
+          </div>
         </div>
 
         {/* Department Selector */}

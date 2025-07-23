@@ -100,10 +100,11 @@ export default function StructureSection() {
             </div>
           </div>
           <h2 className="military-heading text-5xl md:text-6xl mb-6 text-white">STRUKTUR & RÄNGE</h2>
-          <p className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed">
-            HIERARCHISCHE KOMMANDOSTRUKTUR • KLARE BEFEHLSKETTE<br />
-            <span className="text-[hsl(var(--military-success))]">INTERAKTIVE RANGLISTE MIT SICHERHEITSFREIGABEN</span>
-          </p>
+          <div className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed space-y-2">
+            <p className="text-center">HIERARCHISCHE KOMMANDOSTRUKTUR • KLARE BEFEHLSKETTE</p>
+            <p className="text-center"><span className="text-[hsl(var(--military-success))]">INTERAKTIVE RANGLISTE MIT SICHERHEITSFREIGABEN</span></p>
+            <p className="text-center text-purple-400">PERSONALABTEILUNG VERWALTET BEFÖRDERUNGEN UND RANGZUWEISUNGEN</p>
+          </div>
         </div>
 
         <div className="space-y-6">

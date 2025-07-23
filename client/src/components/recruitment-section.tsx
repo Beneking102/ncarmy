@@ -64,7 +64,8 @@ const steps = [
 
 const requirements = [
   { text: "MINDESTENS 18 JAHRE ALT", priority: "KRITISCH" },
-  { text: "VISA-LEVEL MINDESTENS 10", priority: "KRITISCH" },
+  { text: "VISA-LEVEL MINDESTENS 10", priority: "KRITISCH" }, 
+  { text: "PERSONALABTEILUNG PRÜFT ALLE BEWERBUNGEN", priority: "INFO" },
   { text: "EMPFEHLUNGSSCHREIBEN VON AKTIVEN MITGLIEDERN", priority: "BEVORZUGT" },
   { text: "BEREITSCHAFT ZU REGELMÄßIGEM TRAINING", priority: "ERFORDERLICH" },
   { text: "14 TAGE STRAFFREIHEIT", priority: "KRITISCH" },

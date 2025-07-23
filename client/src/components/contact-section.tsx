@@ -214,6 +214,23 @@ export default function ContactSection() {
               </CardContent>
             </Card>
 
+            <Card className="bg-[hsl(var(--military-dark))]/50 border-purple-400/20">
+              <CardContent className="p-6">
+                <h4 className="text-xl font-bold mb-4 flex items-center text-white">
+                  <Users className="text-purple-400 mr-3 h-6 w-6" />
+                  Personalabteilung
+                </h4>
+                <p className="text-gray-300 mb-3">
+                  Für Bewerbungen und Personalangelegenheiten kontaktieren Sie unsere 
+                  Personalabteilung. Spezialisiert auf Rekrutierung und Beförderungen.
+                </p>
+                <Button className="bg-purple-400 hover:bg-purple-400/80 text-white font-bold">
+                  <Users className="mr-2 h-4 w-4" />
+                  HR-Kontakt
+                </Button>
+              </CardContent>
+            </Card>
+
             {/* Quick Stats */}
             <Card className="bg-[hsl(var(--military-charcoal))]/30 border-[hsl(var(--military-sage))]/20">
               <CardContent className="p-6">

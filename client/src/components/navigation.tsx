@@ -28,8 +28,17 @@ export default function Navigation() {
     <nav className="fixed top-0 w-full bg-[hsl(var(--military-dark))]/95 backdrop-blur-sm z-50 border-b-2 border-[hsl(var(--military-success))]/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-[hsl(var(--military-success))]/20 border-2 border-[hsl(var(--military-success))] flex items-center justify-center">
+          <div className="flex items-center space-x-3" onClick={(e) => {
+            if (e.detail === 5) {
+              document.body.style.transform = 'rotate(360deg)';
+              document.body.style.transition = 'transform 2s';
+              setTimeout(() => {
+                document.body.style.transform = '';
+                document.body.style.transition = '';
+              }, 2000);
+            }
+          }}>
+            <div className="w-12 h-12 bg-[hsl(var(--military-success))]/20 border-2 border-[hsl(var(--military-success))] flex items-center justify-center cursor-pointer">
               <Shield className="h-6 w-6 text-[hsl(var(--military-success))]" />
             </div>
             <div>
