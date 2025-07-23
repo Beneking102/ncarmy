@@ -13,7 +13,7 @@ import BackgroundAnimations from "@/components/background-animations";
 import EasterEggHints from "@/components/easter-egg-hints";
 import AdvancedGimmicks from "@/components/advanced-gimmicks";
 import FAQSection from "@/components/faq-section";
-import GimmickTestEnhanced from "@/components/gimmick-test-enhanced";
+
 
 export default function Home() {
   return (
@@ -34,7 +34,7 @@ export default function Home() {
         <StatusIndicator />
         <EasterEggHints />
         <AdvancedGimmicks />
-        <GimmickTestEnhanced />
+
       </div>
     </div>
   );
