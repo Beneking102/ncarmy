@@ -45,7 +45,7 @@ const faqs = [
       },
       {
         q: "Wie funktionieren Beförderungen?",
-        a: "Beförderungen basieren auf Leistung, Dienstzeit und verfügbaren Positionen. Die Personalabteilung verwaltet alle Rangzuweisungen."
+        a: "Beförderungen basieren auf Leistung, Dienstzeit und verfügbaren Positionen."
       }
     ]
   },
@@ -55,11 +55,11 @@ const faqs = [
     questions: [
       {
         q: "Welche Discord-Server werden verwendet?",
-        a: "Alle Kommunikation läuft über den offiziellen NC-Army Discord Server. Der Link wird nach erfolgreicher Bewerbung bereitgestellt."
+        a: "Alle Kommunikation läuft über den offiziellen NC-Army Discord Server."
       },
       {
         q: "Gibt es mobile Unterstützung?",
-        a: "Ja, die NC-Army Website ist vollständig responsive und für alle Geräte optimiert."
+        a: "Ja, die NC-Army Website ist vollständig responsive und für fast alle Geräte optimiert."
       }
     ]
   }
