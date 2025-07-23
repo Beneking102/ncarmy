@@ -7,9 +7,9 @@ export default function EasterEggHints() {
 
   const hints = [
     { icon: Target, text: "Schießstand im Footer entdeckt?", color: "text-red-400" },
-    { icon: Eye, text: "Beobachten Sie den Radar...", color: "text-[hsl(var(--military-success))]" },
-    { icon: Zap, text: "Klicken Sie 5x auf das NC-Army Logo", color: "text-yellow-400" },
-    { icon: Shield, text: "Konami-Code für Überraschung", color: "text-blue-400" },
+    { icon: Eye, text: "Doppelklick auf Überschriften", color: "text-[hsl(var(--military-success))]" },
+    { icon: Zap, text: "Tippe 'MATRIX' für Effekt", color: "text-yellow-400" },
+    { icon: Shield, text: "Ctrl+Shift+H für Hacking", color: "text-blue-400" },
     { icon: Target, text: "Ctrl+N für Night Vision", color: "text-green-400" },
     { icon: Eye, text: "Alt+R für Tactical Radar", color: "text-purple-400" },
     { icon: Zap, text: "Shift+C für Code Rain", color: "text-cyan-400" }

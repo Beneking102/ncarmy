@@ -10,83 +10,81 @@ export default function AdvancedGimmicks() {
   const [codeRain, setCodeRain] = useState(false);
 
   useEffect(() => {
-    // Matrix Rain Easter Egg - Triggered by typing "MATRIX"
     let matrixSequence = '';
     const matrixCode = 'MATRIX';
     
-    // Glitch Effect - Double click on any military heading
+    const handleKeyPress = (e: KeyboardEvent) => {
+      console.log('Key pressed:', e.key, e.ctrlKey, e.shiftKey, e.altKey);
+      
+      // Prevent default for all our shortcuts
+      const key = e.key.toUpperCase();
+      
+      // Simple key combinations
+      if (e.ctrlKey && e.shiftKey && key === 'H') {
+        e.preventDefault();
+        console.log('Activating hacking mode');
+        setHackingMode(true);
+        setTimeout(() => setHackingMode(false), 5000);
+      }
+      
+      if (e.ctrlKey && key === 'N' && !e.shiftKey && !e.altKey) {
+        e.preventDefault();
+        console.log('Toggling night vision');
+        setNightVision(prev => {
+          if (!prev) {
+            setTimeout(() => setNightVision(false), 8000);
+          }
+          return !prev;
+        });
+      }
+      
+      if (e.altKey && key === 'R' && !e.ctrlKey && !e.shiftKey) {
+        e.preventDefault();
+        console.log('Starting radar sweep');
+        setRadarSweep(true);
+        setTimeout(() => setRadarSweep(false), 6000);
+      }
+      
+      if (e.shiftKey && key === 'C' && !e.ctrlKey && !e.altKey) {
+        e.preventDefault();
+        console.log('Starting code rain');
+        setCodeRain(true);
+        setTimeout(() => setCodeRain(false), 10000);
+      }
+      
+      // Matrix sequence
+      if (!e.ctrlKey && !e.shiftKey && !e.altKey) {
+        matrixSequence += key;
+        if (matrixSequence.length > matrixCode.length) {
+          matrixSequence = matrixSequence.slice(-matrixCode.length);
+        }
+        if (matrixSequence === matrixCode) {
+          console.log('Matrix effect activated');
+          setMatrixEffect(true);
+          setTimeout(() => setMatrixEffect(false), 10000);
+          matrixSequence = '';
+        }
+      }
+    };
+
     const handleDoubleClick = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (target.classList.contains('military-heading')) {
+        console.log('Glitch mode activated by double click');
         setGlitchMode(true);
         setTimeout(() => setGlitchMode(false), 3000);
       }
     };
 
-    // Multiple Easter Egg Combinations
-    const handleKeyCombo = (e: KeyboardEvent) => {
-      // Hacking Animation - Ctrl + Shift + H
-      if (e.ctrlKey && e.shiftKey && e.key === 'H') {
-        setHackingMode(true);
-        setTimeout(() => setHackingMode(false), 5000);
-      }
-      
-      // Night Vision Mode - Ctrl + N
-      if (e.ctrlKey && e.key.toUpperCase() === 'N') {
-        setNightVision(!nightVision);
-        setTimeout(() => setNightVision(false), 8000);
-      }
-      
-      // Tactical Radar Sweep - Alt + R
-      if (e.altKey && e.key.toUpperCase() === 'R') {
-        setRadarSweep(true);
-        setTimeout(() => setRadarSweep(false), 6000);
-      }
-      
-      // Code Rain Effect - Shift + C + O + D + E
-      if (e.shiftKey && e.key.toUpperCase() === 'C') {
-        setCodeRain(true);
-        setTimeout(() => setCodeRain(false), 10000);
-      }
-      
-      // Matrix sequence detection
-      matrixSequence += e.key.toUpperCase();
-      if (matrixSequence.length > matrixCode.length) {
-        matrixSequence = matrixSequence.slice(-matrixCode.length);
-      }
-      
-      if (matrixSequence === matrixCode) {
-        setMatrixEffect(true);
-        setTimeout(() => setMatrixEffect(false), 10000);
-        matrixSequence = '';
-      }
-    };
-
-    // Mouse trail effect
-    const createMouseTrail = (e: MouseEvent) => {
-      if (Math.random() > 0.9) { // Only create trail occasionally
-        const trail = document.createElement('div');
-        trail.className = 'mouse-trail';
-        trail.style.left = e.clientX + 'px';
-        trail.style.top = e.clientY + 'px';
-        document.body.appendChild(trail);
-        
-        setTimeout(() => {
-          if (trail.parentNode) {
-            trail.parentNode.removeChild(trail);
-          }
-        }, 1000);
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyCombo);
-    document.addEventListener('dblclick', handleDoubleClick);
-    document.addEventListener('mousemove', createMouseTrail);
+    // Add event listeners
+    window.addEventListener('keydown', handleKeyPress);
+    window.addEventListener('dblclick', handleDoubleClick);
+    
+    console.log('Advanced Gimmicks initialized');
 
     return () => {
-      document.removeEventListener('keydown', handleKeyCombo);
-      document.removeEventListener('dblclick', handleDoubleClick);
-      document.removeEventListener('mousemove', createMouseTrail);
+      window.removeEventListener('keydown', handleKeyPress);
+      window.removeEventListener('dblclick', handleDoubleClick);
     };
   }, []);
 
@@ -199,4 +197,4 @@ export default function AdvancedGimmicks() {
       </div>
     </>
   );
-}
+}console.log('Advanced Gimmicks loaded successfully');
