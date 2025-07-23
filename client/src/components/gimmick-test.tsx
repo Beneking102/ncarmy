@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Target, Eye, Zap, Shield, Code, Radar } from 'lucide-react';
+import { Target, Eye, Zap, Shield, Code, Radar, Gamepad2, MousePointer, Sparkles } from 'lucide-react';
 
 export default function GimmickTest() {
   const [testMode, setTestMode] = useState(false);
+  const [activeEffects, setActiveEffects] = useState<string[]>([]);
 
   const testGimmicks = [
     {
@@ -23,12 +24,12 @@ export default function GimmickTest() {
     },
     {
       name: 'Night Vision',
-      key: 'Ctrl+N',
+      key: 'Alt+N',
       icon: Eye,
       test: () => {
         const event = new KeyboardEvent('keydown', {
           key: 'N',
-          ctrlKey: true,
+          altKey: true,
           bubbles: true
         });
         window.dispatchEvent(event);

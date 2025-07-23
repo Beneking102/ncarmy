@@ -27,7 +27,7 @@ export default function AdvancedGimmicks() {
         setTimeout(() => setHackingMode(false), 5000);
       }
       
-      if (e.ctrlKey && key === 'N' && !e.shiftKey && !e.altKey) {
+      if (e.altKey && key === 'N' && !e.ctrlKey && !e.shiftKey) {
         e.preventDefault();
         console.log('Toggling night vision');
         setNightVision(prev => {

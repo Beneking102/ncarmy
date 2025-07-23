@@ -10,7 +10,7 @@ export default function EasterEggHints() {
     { icon: Eye, text: "Doppelklick auf Überschriften", color: "text-[hsl(var(--military-success))]" },
     { icon: Zap, text: "Tippe 'MATRIX' für Effekt", color: "text-yellow-400" },
     { icon: Shield, text: "Ctrl+Shift+H für Hacking", color: "text-blue-400" },
-    { icon: Target, text: "Ctrl+N für Night Vision", color: "text-green-400" },
+    { icon: Target, text: "Alt+N für Night Vision", color: "text-green-400" },
     { icon: Eye, text: "Alt+R für Tactical Radar", color: "text-purple-400" },
     { icon: Zap, text: "Shift+C für Code Rain", color: "text-cyan-400" }
   ];
