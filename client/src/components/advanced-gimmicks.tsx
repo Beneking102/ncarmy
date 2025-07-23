@@ -5,6 +5,9 @@ export default function AdvancedGimmicks() {
   const [matrixEffect, setMatrixEffect] = useState(false);
   const [glitchMode, setGlitchMode] = useState(false);
   const [hackingMode, setHackingMode] = useState(false);
+  const [nightVision, setNightVision] = useState(false);
+  const [radarSweep, setRadarSweep] = useState(false);
+  const [codeRain, setCodeRain] = useState(false);
 
   useEffect(() => {
     // Matrix Rain Easter Egg - Triggered by typing "MATRIX"
@@ -28,10 +31,22 @@ export default function AdvancedGimmicks() {
         setTimeout(() => setHackingMode(false), 5000);
       }
       
-      // Secret Admin Mode - Alt + A + D + M + I + N
-      if (e.altKey && e.key.toUpperCase() === 'A') {
-        // Could trigger admin panel or special features
-        console.log('Admin sequence started...');
+      // Night Vision Mode - Ctrl + N
+      if (e.ctrlKey && e.key.toUpperCase() === 'N') {
+        setNightVision(!nightVision);
+        setTimeout(() => setNightVision(false), 8000);
+      }
+      
+      // Tactical Radar Sweep - Alt + R
+      if (e.altKey && e.key.toUpperCase() === 'R') {
+        setRadarSweep(true);
+        setTimeout(() => setRadarSweep(false), 6000);
+      }
+      
+      // Code Rain Effect - Shift + C + O + D + E
+      if (e.shiftKey && e.key.toUpperCase() === 'C') {
+        setCodeRain(true);
+        setTimeout(() => setCodeRain(false), 10000);
       }
       
       // Matrix sequence detection
@@ -109,7 +124,7 @@ export default function AdvancedGimmicks() {
 
       {/* Hacking Terminal Effect */}
       {hackingMode && (
-        <div className="fixed top-4 left-4 bg-black/90 border border-[hsl(var(--military-success))] p-4 font-mono text-[hsl(var(--military-success))] text-xs z-50 max-w-md">
+        <div className="fixed bottom-4 left-4 bg-black/90 border border-[hsl(var(--military-success))] p-4 font-mono text-[hsl(var(--military-success))] text-xs z-50 max-w-md">
           <div className="mb-2">
             <span className="text-red-400">[SYSTEM BREACH DETECTED]</span>
           </div>
@@ -120,6 +135,55 @@ export default function AdvancedGimmicks() {
             <div className="text-yellow-400">DOWNLOAD COMPLETE: 847 FILES</div>
             <div className="text-red-400">TERMINATING CONNECTION...</div>
           </div>
+        </div>
+      )}
+
+      {/* Night Vision Effect */}
+      {nightVision && (
+        <div className="fixed inset-0 pointer-events-none z-30">
+          <div className="night-vision-overlay w-full h-full"></div>
+          <div className="fixed top-4 right-4 text-[hsl(var(--military-success))] font-mono text-sm">
+            <div className="bg-black/80 p-2 border border-[hsl(var(--military-success))]">
+              NIGHT VISION: ACTIVE
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Tactical Radar Sweep */}
+      {radarSweep && (
+        <div className="fixed inset-0 pointer-events-none z-20">
+          <div className="radar-sweep-container">
+            <div className="radar-sweep-line"></div>
+          </div>
+          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 text-[hsl(var(--military-success))] font-mono text-sm">
+            <div className="bg-black/80 p-2 border border-[hsl(var(--military-success))]">
+              TACTICAL RADAR: SCANNING...
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Code Rain Effect */}
+      {codeRain && (
+        <div className="fixed inset-0 pointer-events-none z-40 overflow-hidden">
+          {Array.from({ length: 30 }).map((_, i) => (
+            <div
+              key={i}
+              className="absolute text-[hsl(var(--military-success))] font-mono text-xs opacity-70 code-rain-column"
+              style={{
+                left: `${i * 3.33}%`,
+                animationDuration: `${1 + Math.random() * 2}s`,
+                animationDelay: `${Math.random() * 1}s`
+              }}
+            >
+              {Array.from({ length: 25 }).map((_, j) => (
+                <div key={j} className="block">
+                  {Math.random() > 0.5 ? '1' : '0'}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       )}
 

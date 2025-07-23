@@ -9,7 +9,10 @@ export default function EasterEggHints() {
     { icon: Target, text: "Schießstand im Footer entdeckt?", color: "text-red-400" },
     { icon: Eye, text: "Beobachten Sie den Radar...", color: "text-[hsl(var(--military-success))]" },
     { icon: Zap, text: "Klicken Sie 5x auf das NC-Army Logo", color: "text-yellow-400" },
-    { icon: Shield, text: "Konami-Code für Überraschung", color: "text-blue-400" }
+    { icon: Shield, text: "Konami-Code für Überraschung", color: "text-blue-400" },
+    { icon: Target, text: "Ctrl+N für Night Vision", color: "text-green-400" },
+    { icon: Eye, text: "Alt+R für Tactical Radar", color: "text-purple-400" },
+    { icon: Zap, text: "Shift+C für Code Rain", color: "text-cyan-400" }
   ];
 
   useEffect(() => {
@@ -53,7 +56,7 @@ export default function EasterEggHints() {
   const Icon = hint.icon;
 
   return (
-    <div className="fixed bottom-32 right-4 z-40 animate-bounce">
+    <div className="fixed bottom-40 right-4 z-40 animate-bounce">
       <div className={`flex items-center space-x-2 bg-[hsl(var(--military-dark))]/90 backdrop-blur-sm border border-[hsl(var(--military-success))]/30 p-3 rounded-none ${hint.color}`}>
         <Icon className="h-4 w-4" />
         <span className="text-sm font-mono">{hint.text}</span>
