@@ -12,19 +12,31 @@ This is the React-only version of the NC-Army website, ready for deployment on N
 
 ## Deployment to Netlify
 
-### Option 1: Drag & Drop Deployment
+### Fixed Configuration
 
-1. Run `npm run build` in the `/client` directory
-2. Upload the generated `dist` folder to Netlify
+The project is now configured for Netlify deployment with:
+- Updated `package.json` with all required dependencies
+- Simplified build script (removed TypeScript check)
+- Proper TypeScript configuration
+- Tailwind CSS setup
 
-### Option 2: Git Deployment
+### Option 1: Git Deployment (Recommended)
 
 1. Push your code to a Git repository
 2. Connect the repository to Netlify
-3. Set the build settings:
+3. The `netlify.toml` file is already configured with:
    - **Base directory**: `client`
    - **Build command**: `npm run build`
    - **Publish directory**: `client/dist`
+
+### Option 2: Drag & Drop Deployment
+
+```bash
+cd client
+npm install
+npm run build
+```
+Then upload the generated `dist` folder to Netlify
 
 ### Option 3: Netlify CLI
 
@@ -34,6 +46,12 @@ npm install
 npm run build
 npx netlify deploy --prod --dir=dist
 ```
+
+### Build Issues Fixed
+- Added missing `@types/node` dependency
+- Removed TypeScript compilation from build step
+- Simplified configuration files
+- Fixed dependency conflicts
 
 ## Local Development
 
