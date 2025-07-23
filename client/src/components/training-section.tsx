@@ -11,7 +11,7 @@ const trainingCategories = [
     color: "text-[hsl(var(--military-success))]",
     bgColor: "bg-[hsl(var(--military-success))]/10",
     borderColor: "border-[hsl(var(--military-success))]",
-    duration: "4 WOCHEN",
+    duration: "5-7 TAGE",
     trainings: [
       "MILITÄRISCHE GRUNDLAGEN & HIERARCHIE",
       "KOMMUNIKATION & PROTOKOLLE", 
@@ -27,7 +27,6 @@ const trainingCategories = [
     color: "text-red-400",
     bgColor: "bg-red-400/10",
     borderColor: "border-red-400",
-    duration: "6 WOCHEN",
     trainings: [
       "WAFFENSICHERHEIT & HANDHABUNG",
       "PRÄZISIONSSCHIESSSEN",
@@ -43,7 +42,6 @@ const trainingCategories = [
     color: "text-blue-400",
     bgColor: "bg-blue-400/10", 
     borderColor: "border-blue-400",
-    duration: "3 WOCHEN",
     trainings: [
       "TEAMFÜHRUNG & MOTIVATION",
       "KONFLIKTE LÖSEN",
@@ -59,23 +57,23 @@ const trainingCategories = [
     color: "text-yellow-400",
     bgColor: "bg-yellow-400/10",
     borderColor: "border-yellow-400",
-    duration: "8 WOCHEN",
     trainings: [
       "MILITARY POLICE: ERMITTLUNGEN & FESTNAHMEN",
-      "SPECIAL FORCES: VERDECKTE OPERATIONEN",
+      "SEALS: VERDECKTE OPERATIONEN",
       "INFANTERIE: TERRITORIUMSKONTROLLE", 
-      "LUFTWAFFE: FLUGZEUGFÜHRUNG & NAVIGATION"
+      "AIRFORCE: FLUGZEUGFÜHRUNG & NAVIGATION"
     ]
   }
 ];
 
-const achievements = [
+const sonderposten = [
   { icon: Medal, title: "GRUNDAUSBILDUNG", code: "001", description: "ALLE BASIS-MODULE ABGESCHLOSSEN", color: "text-[hsl(var(--military-success))]" },
-  { icon: Target, title: "SCHARFSCHÜTZE", code: "002", description: "PRÄZISIONSSCHIESSSEN GEMEISTERT", color: "text-red-400" },
-  { icon: Users, title: "TEAMLEADER", code: "003", description: "FÜHRUNGSQUALIFIKATION ERHALTEN", color: "text-blue-400" },
-  { icon: Crown, title: "VETERAN", code: "004", description: "ELITE-STATUS ERREICHT", color: "text-yellow-400" },
-  { icon: Brain, title: "STRATEGE", code: "005", description: "TAKTISCHE MEISTERSCHAFT", color: "text-purple-400" },
-  { icon: Handshake, title: "DIPLOMAT", code: "006", description: "VERHANDLUNGSEXPERTE", color: "text-orange-400" }
+  { icon: Target, title: "AUSBILDER", code: "002", description: "BERECHTIGUNG ZUR REKRUTENAUSBILDUNG", color: "text-red-400" },
+  { icon: Users, title: "LEITSTELLENAUSBILDER", code: "003", description: "SPEZIALIST FÜR EINSATZKOORDINATION", color: "text-blue-400" },
+  { icon: Crown, title: "AKTENKUNDE AUSBILDER", code: "004", description: "EXPERTE FÜR ADMINISTRATIVE VERFAHREN", color: "text-yellow-400" },
+  { icon: Brain, title: "GWD-AUSBILDER", code: "005", description: "GRUNDWEHRDIENST AUSBILDUNGSLEITER", color: "text-purple-400" },
+  { icon: Shield, title: "DRILL SERGEANT", code: "006", description: "ELITE AUSBILDUNGSFÜHRUNG", color: "text-orange-400" },
+  { icon: Award, title: "ABTEILUNGSLEITUNG", code: "007", description: "FÜHRUNGSVERANTWORTUNG EINER ABTEILUNG", color: "text-cyan-400" }
 ];
 
 export default function TrainingSection() {
@@ -110,7 +108,7 @@ export default function TrainingSection() {
               <span className="text-[hsl(var(--military-success))] font-mono text-sm uppercase tracking-widest">[AUSBILDUNG]</span>
             </div>
           </div>
-          <h2 className="military-heading text-5xl md:text-6xl mb-6 text-white">TRAINING PROGRAM</h2>
+          <h2 className="military-heading text-5xl md:text-6xl mb-6 text-white">AUSBILDUNGSPROGRAMM</h2>
           <p className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed">
             UMFASSENDES AUSBILDUNGSPROGRAMM • HÖCHSTE MILITÄRISCHE STANDARDS<br />
             <span className="text-[hsl(var(--military-success))]">FORMT REKRUTEN ZU ELITESOLDATEN</span>
@@ -137,9 +135,11 @@ export default function TrainingSection() {
                         <span className={`text-sm px-3 py-1 ${category.bgColor} ${category.color} font-mono border ${category.borderColor}`}>
                           {category.code}
                         </span>
-                        <span className="text-xs px-2 py-1 bg-gray-500/20 text-gray-400 border border-gray-500/30 font-mono">
-                          {category.duration}
-                        </span>
+                        {category.duration && (
+                          <span className="text-xs px-2 py-1 bg-gray-500/20 text-gray-400 border border-gray-500/30 font-mono">
+                            {category.duration}
+                          </span>
+                        )}
                       </div>
                       <h3 className="text-xl font-bold text-white military-heading">{category.title}</h3>
                       <p className="text-gray-300 text-sm font-mono">{category.description}</p>
@@ -168,24 +168,24 @@ export default function TrainingSection() {
                 <div className="w-16 h-16 bg-[hsl(var(--military-success))]/20 border-2 border-[hsl(var(--military-success))] flex items-center justify-center mx-auto mb-4">
                   <Award className="h-8 w-8 text-[hsl(var(--military-success))]" />
                 </div>
-                <h3 className="text-3xl font-bold military-heading text-white">LEISTUNGSABZEICHEN</h3>
-                <p className="text-gray-300 font-mono text-sm mt-2">AUSZEICHNUNGEN • ZERTIFIZIERUNGEN • EHRUNGEN</p>
+                <h3 className="text-3xl font-bold military-heading text-white">SONDERPOSTEN</h3>
+                <p className="text-gray-300 font-mono text-sm mt-2">SPEZIELLE POSITIONEN • FÜHRUNGSROLLEN • AUSBILDER</p>
               </div>
               <div className="grid md:grid-cols-3 gap-6">
-                {achievements.map((achievement, index) => {
-                  const Icon = achievement.icon;
+                {sonderposten.map((posten, index) => {
+                  const Icon = posten.icon;
                   return (
                     <div key={index} className="text-center group bg-[hsl(var(--military-dark))]/50 p-4 border border-gray-600 hover:border-[hsl(var(--military-success))]/50 transition-all duration-300">
                       <div className="flex items-center justify-center space-x-3 mb-3">
                         <div className="w-12 h-12 bg-gray-700 border-2 border-gray-600 flex items-center justify-center group-hover:border-[hsl(var(--military-success))] transition-colors">
-                          <Icon className={`h-6 w-6 ${achievement.color} group-hover:text-[hsl(var(--military-success))] transition-colors`} />
+                          <Icon className={`h-6 w-6 ${posten.color} group-hover:text-[hsl(var(--military-success))] transition-colors`} />
                         </div>
                         <span className="text-xs px-2 py-1 bg-gray-500/20 text-gray-400 border border-gray-500/30 font-mono">
-                          #{achievement.code}
+                          #{posten.code}
                         </span>
                       </div>
-                      <h4 className="font-bold text-white mb-2 military-heading text-sm">{achievement.title}</h4>
-                      <p className="text-xs text-gray-400 font-mono">{achievement.description}</p>
+                      <h4 className="font-bold text-white mb-2 military-heading text-sm">{posten.title}</h4>
+                      <p className="text-xs text-gray-400 font-mono">{posten.description}</p>
                     </div>
                   );
                 })}

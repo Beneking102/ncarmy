@@ -64,10 +64,10 @@ const steps = [
 
 const requirements = [
   { text: "MINDESTENS 18 JAHRE ALT", priority: "KRITISCH" },
-  { text: "VISA-LEVEL MINDESTENS 3", priority: "KRITISCH" },
+  { text: "VISA-LEVEL MINDESTENS 10", priority: "KRITISCH" },
   { text: "EMPFEHLUNGSSCHREIBEN VON AKTIVEN MITGLIEDERN", priority: "BEVORZUGT" },
   { text: "BEREITSCHAFT ZU REGELMÄßIGEM TRAINING", priority: "ERFORDERLICH" },
-  { text: "KEINE VORSTRAFEN ODER DISZIPLINARVERFAHREN", priority: "KRITISCH" },
+  { text: "14 TAGE STRAFFREIHEIT", priority: "KRITISCH" },
   { text: "KÖRPERLICHE UND GEISTIGE EIGNUNG", priority: "ERFORDERLICH" }
 ];
 
@@ -264,9 +264,9 @@ export default function RecruitmentSection() {
                   >
                     <option value="">EINHEIT AUSWÄHLEN</option>
                     <option value="military-police">MILITARY POLICE</option>
-                    <option value="seals">SPECIAL FORCES</option>
+                    <option value="seals">SEALS</option>
                     <option value="infantry">INFANTERIE</option>
-                    <option value="airforce">LUFTWAFFE</option>
+                    <option value="airforce">AIRFORCE</option>
                   </select>
                   {errors.preferredUnit && <p className="text-red-400 text-sm mt-1 font-mono">{errors.preferredUnit.message}</p>}
                 </div>
@@ -275,14 +275,14 @@ export default function RecruitmentSection() {
                   <Input
                     id="visaLevel"
                     type="number"
-                    min="1"
-                    max="10"
+                    min="10"
+                    max="20"
                     {...register("visaLevel", { 
                       required: "Visa-Level ist erforderlich",
-                      min: { value: 1, message: "Mindestens Level 1" },
-                      max: { value: 10, message: "Maximal Level 10" }
+                      min: { value: 10, message: "Mindestens Level 10" },
+                      max: { value: 20, message: "Maximal Level 20" }
                     })}
-                    placeholder="5"
+                    placeholder="10"
                     className="bg-[hsl(var(--military-dark))] border-[hsl(var(--military-success))]/30 text-white font-mono placeholder:text-gray-500 focus:border-[hsl(var(--military-success))] focus:ring-[hsl(var(--military-success))]"
                   />
                   {errors.visaLevel && <p className="text-red-400 text-sm mt-1 font-mono">{errors.visaLevel.message}</p>}
@@ -302,6 +302,15 @@ export default function RecruitmentSection() {
                   className="bg-[hsl(var(--military-dark))] border-[hsl(var(--military-success))]/30 text-white font-mono placeholder:text-gray-500 focus:border-[hsl(var(--military-success))] focus:ring-[hsl(var(--military-success))]"
                 />
                 {errors.motivation && <p className="text-red-400 text-sm mt-1 font-mono">{errors.motivation.message}</p>}
+              </div>
+
+              {/* Discord Integration Notice */}
+              <div className="bg-blue-500/10 border border-blue-500/30 p-4 mb-6">
+                <h4 className="text-blue-400 font-bold mb-2 military-heading text-sm">DISCORD INTEGRATION</h4>
+                <p className="text-gray-300 text-xs font-mono leading-relaxed">
+                  BEWERBUNGEN WERDEN AUTOMATISCH AN UNSER DISCORD-SYSTEM WEITERGELEITET.<br />
+                  STELLEN SIE SICHER, DASS IHR DISCORD-NAME MIT IHREM IN-GAME NAME ÜBEREINSTIMMT.
+                </p>
               </div>
 
               <div className="pt-6 border-t border-[hsl(var(--military-success))]/20">

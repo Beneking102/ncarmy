@@ -5,64 +5,64 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 
 const ranks = [
   {
-    id: "oberkommando",
+    id: "generaele",
     icon: Crown,
-    title: "OBERKOMMANDO",
+    title: "GENERÄLE",
     description: "SUPREME COMMAND • HÖCHSTE FÜHRUNGSEBENE",
-    stars: "★★★★",
-    positions: "1 POSITION",
+    stars: "★★★★★",
+    positions: "5 POSITIONEN",
     color: "border-red-400 text-red-400",
     bgColor: "bg-red-400/10",
     details: "VOLLSTÄNDIGE BEFEHLSGEWALT ÜBER ALLE EINHEITEN. STRATEGISCHE PLANUNG UND ENTSCHEIDUNGSFINDUNG AUF HÖCHSTER EBENE.",
-    clearanceLevel: "ALPHA"
+    clearanceLevel: "COMMAND"
   },
   {
     id: "abteilungsleitung",
     icon: Star,
     title: "ABTEILUNGSLEITUNG",
     description: "DEPARTMENTAL COMMAND • FACHBEREICHSLEITUNG",
-    stars: "★★★",
-    positions: "5 POSITIONEN",
+    stars: "★★★★",
+    positions: "8 POSITIONEN",
     color: "border-yellow-400 text-yellow-400",
     bgColor: "bg-yellow-400/10",
     details: "VERANTWORTLICH FÜR STRATEGISCHE AUSRICHTUNG UND OPERATIVE FÜHRUNG DER JEWEILIGEN ABTEILUNGEN.",
-    clearanceLevel: "BRAVO"
+    clearanceLevel: "EXECUTIVE"
   },
   {
     id: "drill-sergeants",
     icon: Target,
     title: "DRILL SERGEANTS",
     description: "TRAINING COMMAND • AUSBILDUNGSLEITUNG",
-    stars: "★★",
+    stars: "★★★",
     positions: "10 POSITIONEN",
     color: "border-[hsl(var(--military-success))] text-[hsl(var(--military-success))]",
     bgColor: "bg-[hsl(var(--military-success))]/10",
     details: "AUSBILDUNG NEUER REKRUTEN UND KONTINUIERLICHE WEITERBILDUNG AKTIVER SOLDATEN.",
-    clearanceLevel: "CHARLIE"
+    clearanceLevel: "TRAINING"
   },
   {
-    id: "active-duty",
+    id: "soldaten",
     icon: Shield,
-    title: "ACTIVE DUTY SOLDIERS",
+    title: "SOLDATEN",
     description: "FIELD OPERATIONS • AKTIVER DIENST",
-    stars: "★",
+    stars: "★★",
     positions: "UNBEGRENZT",
     color: "border-blue-400 text-blue-400",
     bgColor: "bg-blue-400/10",
     details: "OPERATIVE EINSÄTZE, PATROUILLENDIENST UND SICHERUNG VON NARCO CITY.",
-    clearanceLevel: "DELTA"
+    clearanceLevel: "OPERATIONAL"
   },
   {
     id: "recruits",
     icon: User,
     title: "REKRUTEN",
     description: "TRAINING PHASE • AUSBILDUNGSPHASE",
-    stars: "○",
-    positions: "AUSBILDUNG",
+    stars: "★",
+    positions: "15 AUSBILDUNGSPLÄTZE",
     color: "border-gray-400 text-gray-400",
     bgColor: "bg-gray-400/10",
-    details: "GRUNDAUSBILDUNG UND BEWÄHRUNG FÜR DEN AUFSTIEG ZU ACTIVE DUTY SOLDIERS.",
-    clearanceLevel: "ECHO"
+    details: "GRUNDAUSBILDUNG UND BEWÄHRUNG FÜR DEN AUFSTIEG ZU SOLDATEN.",
+    clearanceLevel: "RECRUIT"
   }
 ];
 

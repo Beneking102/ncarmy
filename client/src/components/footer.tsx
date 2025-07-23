@@ -1,4 +1,6 @@
-import { Shield } from "lucide-react";
+import { Shield, Target } from "lucide-react";
+import { useState } from "react";
+import ArmyGame from "./army-game";
 
 const footerSections = [
   {
@@ -7,7 +9,7 @@ const footerSections = [
       { label: "Military Police", href: "#" },
       { label: "SEALs", href: "#" },
       { label: "Infanterie", href: "#" },
-      { label: "Luftwaffe", href: "#" }
+      { label: "Airforce", href: "#" }
     ]
   },
   {
@@ -30,9 +32,28 @@ const footerSections = [
 ];
 
 export default function Footer() {
+  const [showGame, setShowGame] = useState(false);
+
   return (
     <footer className="bg-[hsl(var(--military-dark))] py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Easter Egg Game */}
+        {showGame && (
+          <div className="mb-12">
+            <ArmyGame />
+          </div>
+        )}
+        
+        {/* Easter Egg Trigger */}
+        <div className="text-center mb-8">
+          <button
+            onClick={() => setShowGame(!showGame)}
+            className="text-gray-500 hover:text-[hsl(var(--military-success))] transition-colors text-xs font-mono opacity-20 hover:opacity-100"
+          >
+            <Target className="w-4 h-4 inline mr-1" />
+            TRAINING MODE
+          </button>
+        </div>
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <div className="flex items-center space-x-3 mb-4">

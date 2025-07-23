@@ -132,6 +132,15 @@ export default function ContactSection() {
                   />
                   {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>}
                 </div>
+                {/* Discord Integration Notice */}
+                <div className="bg-blue-500/10 border border-blue-500/30 p-4 mb-6">
+                  <h4 className="text-blue-400 font-bold mb-2 text-sm">DISCORD INTEGRATION</h4>
+                  <p className="text-gray-300 text-xs leading-relaxed">
+                    Kontaktanfragen werden automatisch an unser Discord-Support-Team weitergeleitet.<br />
+                    Für schnellere Antworten besuchen Sie direkt unseren Discord-Server.
+                  </p>
+                </div>
+
                 <Button 
                   type="submit" 
                   disabled={isSubmitting}

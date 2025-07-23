@@ -132,7 +132,16 @@ The application is designed as a complete military recruitment and information p
 - **Tactical Grid Background**: Subtle grid overlay for military aesthetic
 - **Status Indicator**: Floating real-time status widget showing system operational status, online count, and current time
 
+### Structure & Requirements Updates (January 2025)
+- **Updated Rank Structure**: Generäle (5), Abteilungsleitung (8), Drill Sergeants (10), Soldaten (unlimited), Rekruten (15 training slots)
+- **Department Modernization**: MP (30 slots), SEALS (10 slots), Infanterie (20 slots), Airforce (10 slots)
+- **Requirement Updates**: Visa level minimum 10, 14-day crime-free requirement, maintained 18+ age requirement
+- **Training Program Localization**: Converted to German, updated duration from weeks to 5-7 days for basic training
+- **Sonderposten System**: Replaced achievements with special positions including Ausbilder, Drill Sergeant, Abteilungsleitung roles
+
 ### Functionality Improvements  
+- **Easter Egg Mini-Game**: Added army-themed target practice game in footer with high score tracking
+- **Discord Integration Notices**: Added information about Discord connectivity for applications and contact forms
 - **Eye-Catcher Elements**: Animated radar sweep in hero section and floating status indicator
 - **Interactive Animations**: Scroll-triggered animations and hover effects throughout
 - **Real-Time Elements**: Live clock displays and dynamic online counters
