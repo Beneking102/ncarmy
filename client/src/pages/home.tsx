@@ -11,6 +11,8 @@ import Footer from "@/components/footer";
 import StatusIndicator from "@/components/status-indicator";
 import BackgroundAnimations from "@/components/background-animations";
 import EasterEggHints from "@/components/easter-egg-hints";
+import AdvancedGimmicks from "@/components/advanced-gimmicks";
+import FAQSection from "@/components/faq-section";
 
 export default function Home() {
   return (
@@ -25,10 +27,12 @@ export default function Home() {
         <RecruitmentSection />
         <TrainingSection />
         <ToolsSection />
+        <FAQSection />
         <ContactSection />
         <Footer />
         <StatusIndicator />
         <EasterEggHints />
+        <AdvancedGimmicks />
       </div>
     </div>
   );

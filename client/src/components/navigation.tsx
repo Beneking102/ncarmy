@@ -11,6 +11,7 @@ const navItems = [
   { href: "#recruitment", label: "Recruitment" },
   { href: "#training", label: "Training" },
   { href: "#tools", label: "Tools" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Kontakt" },
 ];
 

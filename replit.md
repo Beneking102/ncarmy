@@ -122,6 +122,16 @@ The application is designed as a complete military recruitment and information p
 
 ## Recent Changes (January 2025)
 
+### Latest Updates (January 23, 2025)
+- **Personalabteilung Integration**: Added Personnel department only under "Sonderposten" section as requested, removed from Spezialabteilungen and Structure descriptions
+- **FAQ Section**: Created comprehensive FAQ section with collapsible questions covering Bewerbung, Ausbildung, Dienst, and Technical topics
+- **Advanced Easter Eggs**: Implemented multiple hidden features including Matrix rain effect (type "MATRIX"), glitch mode (double-click military headings), hacking terminal (Ctrl+Shift+H)
+- **"Made by Bene" Feature**: Added interactive footer credit with 5-click rainbow effect and developer mode popup
+- **Mobile Optimizations**: Enhanced responsive design, improved hint popup positioning above system status
+- **Advanced Gimmicks System**: Mouse trails, enhanced animations, multiple keyboard shortcuts for hidden features
+
+## Recent Changes (January 2025)
+
 ### Design Modernization & Army Styling
 - **Enhanced Military Color Palette**: Updated to more authentic army colors with tactical green, desert sand, and charcoal tones
 - **Advanced Animations**: Added military-themed animations including radar sweeps, tactical pulses, and slide-in effects

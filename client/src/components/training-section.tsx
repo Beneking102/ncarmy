@@ -73,7 +73,8 @@ const sonderposten = [
   { icon: Crown, title: "AKTENKUNDE AUSBILDER", code: "004", description: "EXPERTE FÜR ADMINISTRATIVE VERFAHREN", color: "text-yellow-400" },
   { icon: Brain, title: "GWD-AUSBILDER", code: "005", description: "GRUNDWEHRDIENST AUSBILDUNGSLEITER", color: "text-purple-400" },
   { icon: Shield, title: "DRILL SERGEANT", code: "006", description: "ELITE AUSBILDUNGSFÜHRUNG", color: "text-orange-400" },
-  { icon: Award, title: "ABTEILUNGSLEITUNG", code: "007", description: "FÜHRUNGSVERANTWORTUNG EINER ABTEILUNG", color: "text-cyan-400" }
+  { icon: Award, title: "ABTEILUNGSLEITUNG", code: "007", description: "FÜHRUNGSVERANTWORTUNG EINER ABTEILUNG", color: "text-cyan-400" },
+  { icon: Users, title: "PERSONALABTEILUNG", code: "008", description: "REKRUTIERUNG • PERSONALVERWALTUNG • BEFÖRDERUNGEN", color: "text-purple-400" }
 ];
 
 export default function TrainingSection() {

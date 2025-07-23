@@ -61,25 +61,7 @@ const departments = [
     borderColor: "border-[hsl(var(--military-success))]",
     bgColor: "bg-[hsl(var(--military-success))]/10"
   },
-  {
-    id: "personnel",
-    name: "PERSONALABTEILUNG",
-    code: "HR",
-    icon: Users,
-    slots: 8,
-    status: "AKTIV",
-    classification: "ADMINISTRATION",
-    focus: "PERSONALVERWALTUNG • REKRUTIERUNG • AUSBILDUNGSKOORDINATION • PERSONALENTWICKLUNG",
-    skills: [
-      "PERSONALPLANUNG",
-      "REKRUTIERUNGSVERFAHREN",
-      "AUSBILDUNGSORGANISATION",
-      "PERSONALAKTEN-VERWALTUNG"
-    ],
-    color: "text-purple-400",
-    borderColor: "border-purple-400",
-    bgColor: "bg-purple-400/10"
-  },
+
   {
     id: "airforce",
     name: "AIRFORCE",
@@ -140,7 +122,7 @@ export default function DepartmentsSection() {
           <div className="text-lg text-gray-300 max-w-4xl mx-auto font-mono leading-relaxed space-y-2">
             <p className="text-center">HOCHSPEZIALISIERTE EINHEITEN • VERSCHIEDENE EINSATZGEBIETE</p>
             <p className="text-center"><span className="text-[hsl(var(--military-success))]">WÄHLEN SIE IHRE ABTEILUNG FÜR DETAILLIERTE INFORMATIONEN</span></p>
-            <p className="text-center text-purple-400">PERSONALABTEILUNG VERWALTET ALLE EINSTELLUNGEN UND TRANSFERS</p>
+
           </div>
         </div>
 

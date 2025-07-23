@@ -177,6 +177,72 @@
   }
 }
 
+/* Advanced Gimmick Animations */
+.mouse-trail {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: hsl(var(--military-success));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 999;
+  animation: mouseTrailFade 1s ease-out forwards;
+}
+
+@keyframes mouseTrailFade {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+.matrix-rain {
+  animation: matrixFall 3s linear infinite;
+}
+
+@keyframes matrixFall {
+  0% {
+    transform: translateY(-100vh);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.glitch-overlay {
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 0, 0, 0.1) 35%,
+    transparent 40%,
+    rgba(0, 255, 0, 0.1) 45%,
+    transparent 50%,
+    rgba(0, 0, 255, 0.1) 55%,
+    transparent 60%
+  );
+  width: 100%;
+  height: 100%;
+  animation: glitchMove 0.1s linear infinite;
+}
+
+@keyframes glitchMove {
+  0% { transform: translateX(-2px); }
+  25% { transform: translateX(2px); }
+  50% { transform: translateX(-1px); }
+  75% { transform: translateX(1px); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes rainbow-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 @layer base {
   * {
     @apply border-border;

@@ -53,7 +53,7 @@ export default function EasterEggHints() {
   const Icon = hint.icon;
 
   return (
-    <div className="fixed bottom-20 right-4 z-50 animate-bounce">
+    <div className="fixed bottom-32 right-4 z-40 animate-bounce">
       <div className={`flex items-center space-x-2 bg-[hsl(var(--military-dark))]/90 backdrop-blur-sm border border-[hsl(var(--military-success))]/30 p-3 rounded-none ${hint.color}`}>
         <Icon className="h-4 w-4" />
         <span className="text-sm font-mono">{hint.text}</span>
